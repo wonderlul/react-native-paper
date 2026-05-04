@@ -10,6 +10,8 @@ import {
   ACTIVE_INDICATOR_SIZE,
   INACTIVE_INDICATOR_SIZE,
   INPUT_FONT_SIZE,
+  PREFIX_END_PADDING,
+  SUFFIX_START_PADDING,
   isWeb,
 } from '../constants';
 import {
@@ -81,7 +83,7 @@ export const getFilledTextFieldData = (
   // =======================
 
   const {
-    colors: { onSurface },
+    colors: { onSurface, onSurfaceVariant },
   } = theme;
 
   const labelColor = getLabelColor({
@@ -231,7 +233,8 @@ export const getFilledTextFieldData = (
     $inputStyle,
     {
       fontSize: INPUT_FONT_SIZE,
-      color: onSurface,
+      color: onSurfaceVariant,
+      paddingEnd: PREFIX_END_PADDING,
     },
     disabled && $disabledStyle,
     prefixProps?.style,
@@ -241,7 +244,8 @@ export const getFilledTextFieldData = (
     $inputStyle,
     {
       fontSize: INPUT_FONT_SIZE,
-      color: onSurface,
+      color: onSurfaceVariant,
+      paddingStart: SUFFIX_START_PADDING,
     },
     disabled && $disabledStyle,
     suffixProps?.style,

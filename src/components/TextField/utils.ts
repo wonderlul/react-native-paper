@@ -68,7 +68,7 @@ export const getSupportingTextColor = ({
 
 /**
  * Returns the solid background color for the filled field container, or
- * `undefined` when disabled. The disabled tint (`onSurface @ 0.04`) is rendered
+ * `undefined` when disabled. The disabled tint is rendered
  * as a separate overlay View whose alpha is applied via the `opacity` style;
  * keeping the alpha out of the color string is what makes the component safe
  * to use with `PlatformColor` values on Android.

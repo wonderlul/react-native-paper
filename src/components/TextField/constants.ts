@@ -18,6 +18,9 @@ export const TEXT_FIELD_ACCESSORY_MARGIN_HORIZONTAL = 12;
 // ==================
 export const ACCESSORY_SIZE = 24;
 
+export const PREFIX_END_PADDING = 2;
+export const SUFFIX_START_PADDING = 2;
+
 // ===============
 // TYPOGRAPHY
 // ===============

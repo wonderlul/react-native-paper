@@ -100,6 +100,7 @@ const TextFieldIcon = ({
         size={iconSize}
         style={$iconStyle}
         onPress={onPressHandler}
+        disabled={!editable}
         {...accessibility}
       />
     </View>

@@ -8,12 +8,9 @@ import {
   type TextFieldAccessoryProps,
 } from 'react-native-paper';
 
-import { useExampleTheme } from '../hooks/useExampleTheme';
 import ScreenWrapper from '../ScreenWrapper';
 
 const TextFieldExample = () => {
-  const { colors } = useExampleTheme();
-  const iconMuted = colors.onSurfaceVariant;
   const [searchQuery, setSearchQuery] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [filledPassword, setFilledPassword] = React.useState('');
@@ -42,7 +39,7 @@ const TextFieldExample = () => {
         accessibilityRole="button"
         accessibilityLabel="Clear text"
       >
-        <Icon source="close" size={24} color={iconMuted} />
+        <Icon source="close" size={24} />
       </Pressable>
     );
   };
@@ -59,7 +56,7 @@ const TextFieldExample = () => {
         accessibilityRole="button"
         accessibilityLabel="Clear text"
       >
-        <Icon source="close" size={24} color={iconMuted} />
+        <Icon source="close" size={24} />
       </Pressable>
     );
   };
@@ -67,7 +64,7 @@ const TextFieldExample = () => {
   const SearchLeadingAccessory = ({ style }: TextFieldAccessoryProps) => {
     return (
       <View style={style}>
-        <Icon source="magnify" size={24} color={iconMuted} />
+        <Icon source="magnify" size={24} />
       </View>
     );
   };
@@ -82,7 +79,6 @@ const TextFieldExample = () => {
           onChangeText={setSearchQuery}
           StartAccessory={SearchLeadingAccessory}
           EndAccessory={ClearFilledSearchAccessory}
-          pressableStyle={styles.field}
           placeholder="Search"
         />
         <TextField
@@ -91,17 +87,15 @@ const TextFieldExample = () => {
           value={filledIconQuery}
           onChangeText={setFilledIconQuery}
           StartAccessory={(props: TextFieldAccessoryProps) => (
-            <TextField.Icon {...props} icon="magnify" color={iconMuted} />
+            <TextField.Icon {...props} icon="magnify" />
           )}
           EndAccessory={(props: TextFieldAccessoryProps) => (
             <TextField.Icon
               {...props}
               icon="close"
-              color={iconMuted}
               onPress={() => setFilledIconQuery('')}
             />
           )}
-          pressableStyle={styles.field}
           placeholder="Search"
         />
         <TextField
@@ -112,7 +106,6 @@ const TextFieldExample = () => {
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
-          pressableStyle={styles.field}
           placeholder="Email"
         />
         <TextField
@@ -125,7 +118,6 @@ const TextFieldExample = () => {
           onChangeText={setErrorField}
           keyboardType="email-address"
           autoCapitalize="none"
-          pressableStyle={styles.field}
         />
         <TextField
           variant="filled"
@@ -133,7 +125,6 @@ const TextFieldExample = () => {
           supportingText="Contact support to make changes."
           value="read-only@example.com"
           editable={false}
-          pressableStyle={styles.field}
         />
         <TextField
           variant="filled"
@@ -145,7 +136,6 @@ const TextFieldExample = () => {
           multiline
           counter
           maxLength={200}
-          pressableStyle={styles.field}
         />
         <TextField
           variant="filled"
@@ -156,7 +146,6 @@ const TextFieldExample = () => {
           onChangeText={setFilledPassword}
           secureTextEntry
           textContentType="password"
-          pressableStyle={styles.field}
         />
 
         <TextField
@@ -165,7 +154,6 @@ const TextFieldExample = () => {
           value={filledPrefix}
           onChangeText={setFilledPrefix}
           prefix="$"
-          pressableStyle={styles.field}
           placeholder="0.00"
           keyboardType="decimal-pad"
           StartAccessory={SearchLeadingAccessory}
@@ -176,7 +164,6 @@ const TextFieldExample = () => {
           value={filledSuffix}
           onChangeText={setFilledSuffix}
           suffix="/100"
-          pressableStyle={styles.field}
           keyboardType="number-pad"
           EndAccessory={ClearFilledSearchAccessory}
         />
@@ -190,7 +177,6 @@ const TextFieldExample = () => {
           onChangeText={setOutlinedSearchQuery}
           StartAccessory={SearchLeadingAccessory}
           EndAccessory={ClearOutlinedSearchAccessory}
-          pressableStyle={styles.field}
           placeholder="Search"
         />
         <TextField
@@ -199,17 +185,15 @@ const TextFieldExample = () => {
           value={outlinedIconQuery}
           onChangeText={setOutlinedIconQuery}
           StartAccessory={(props: TextFieldAccessoryProps) => (
-            <TextField.Icon {...props} icon="magnify" color={iconMuted} />
+            <TextField.Icon {...props} icon="magnify" />
           )}
           EndAccessory={(props: TextFieldAccessoryProps) => (
             <TextField.Icon
               {...props}
               icon="close"
-              color={iconMuted}
               onPress={() => setOutlinedIconQuery('')}
             />
           )}
-          pressableStyle={styles.field}
           placeholder="Search"
         />
         <TextField
@@ -217,7 +201,6 @@ const TextFieldExample = () => {
           label="Without accessories"
           value={outlinedText}
           onChangeText={setOutlinedText}
-          pressableStyle={styles.field}
         />
         <TextField
           variant="outlined"
@@ -229,7 +212,6 @@ const TextFieldExample = () => {
           onChangeText={setErrorField}
           keyboardType="email-address"
           autoCapitalize="none"
-          pressableStyle={styles.field}
         />
         <TextField
           variant="outlined"
@@ -237,7 +219,6 @@ const TextFieldExample = () => {
           supportingText="This field cannot be edited."
           value="Disabled"
           status="disabled"
-          pressableStyle={styles.field}
         />
         <TextField
           variant="outlined"
@@ -249,7 +230,6 @@ const TextFieldExample = () => {
           multiline
           counter
           maxLength={200}
-          pressableStyle={styles.field}
         />
         <TextField
           variant="outlined"
@@ -260,7 +240,6 @@ const TextFieldExample = () => {
           onChangeText={setOutlinedPassword}
           secureTextEntry
           textContentType="password"
-          pressableStyle={styles.field}
         />
         <TextField
           variant="outlined"
@@ -268,7 +247,6 @@ const TextFieldExample = () => {
           value={outlinedPrefix}
           onChangeText={setOutlinedPrefix}
           prefix="$"
-          pressableStyle={styles.field}
           placeholder="0.00"
           keyboardType="decimal-pad"
           StartAccessory={SearchLeadingAccessory}
@@ -279,7 +257,6 @@ const TextFieldExample = () => {
           value={outlinedSuffix}
           onChangeText={setOutlinedSuffix}
           suffix="/100"
-          pressableStyle={styles.field}
           keyboardType="number-pad"
           EndAccessory={ClearOutlinedSearchAccessory}
         />
@@ -295,7 +272,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
-  field: {},
   section: {
     gap: 16,
   },

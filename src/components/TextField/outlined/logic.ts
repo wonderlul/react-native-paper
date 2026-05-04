@@ -6,7 +6,12 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { INPUT_FONT_SIZE, isWeb } from '../constants';
+import {
+  INPUT_FONT_SIZE,
+  PREFIX_END_PADDING,
+  SUFFIX_START_PADDING,
+  isWeb,
+} from '../constants';
 import {
   $counterStyle,
   $disabledStyle,
@@ -70,7 +75,7 @@ export const getOutlinedTextFieldData = (
   // =======================
 
   const {
-    colors: { background: labelBackgroundColor, onSurface },
+    colors: { background: labelBackgroundColor, onSurface, onSurfaceVariant },
   } = theme;
 
   const labelColor = getLabelColor({
@@ -185,7 +190,8 @@ export const getOutlinedTextFieldData = (
     $inputStyle,
     {
       fontSize: INPUT_FONT_SIZE,
-      color: onSurface,
+      color: onSurfaceVariant,
+      paddingEnd: PREFIX_END_PADDING,
     },
     disabled && $disabledStyle,
     prefixProps?.style,
@@ -195,7 +201,8 @@ export const getOutlinedTextFieldData = (
     $inputStyle,
     {
       fontSize: INPUT_FONT_SIZE,
-      color: onSurface,
+      color: onSurfaceVariant,
+      paddingStart: SUFFIX_START_PADDING,
     },
     disabled && $disabledStyle,
     suffixProps?.style,
