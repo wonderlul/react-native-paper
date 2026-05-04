@@ -1,42 +1,22 @@
-import {
-  Animated,
-  I18nManager,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-} from 'react-native';
+import { Animated, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import {
   ACTIVE_INDICATOR_SIZE,
   INACTIVE_INDICATOR_SIZE,
   INPUT_FONT_SIZE,
-  PREFIX_END_PADDING,
-  SUFFIX_START_PADDING,
+  LABEL_START_OFFSET_WITHOUT_ACCESSORY,
   isWeb,
 } from '../constants';
-import {
-  $counterStyle,
-  $disabledStyle,
-  $inputStyle,
-  $leadingAccessoryStyle,
-  $supportingTextStyle,
-  $trailingAccessoryStyle,
-} from '../styles';
+import { $disabledStyle, $inputStyle } from '../styles';
 import type { TextFieldProps, TextFieldSharedApi } from '../TextField';
-import {
-  getFieldBackgroundColor,
-  getLabelColor,
-  getSupportingTextColor,
-} from '../utils';
+import { getFieldBackgroundColor, getSharedTextFieldStyleData } from '../utils';
 import {
   LABEL_START_OFFSET_WITH_ACCESSORY,
-  LABEL_START_OFFSET_WITHOUT_ACCESSORY,
   MULTILINE_PADDING_TOP,
 } from './constants';
 import {
   $containerStyle,
   $fieldStyle,
-  $labelTextStyle,
   $labelWrapperStyle,
   $disabledBackgroundStyle,
   $outlineStyle,
@@ -48,50 +28,30 @@ export const getFilledTextFieldData = (
   props: TextFieldProps
 ) => {
   const {
-    labelProps,
-    supportingTextProps,
-    counterProps,
     style: $inputStyleOverride,
     fieldStyle: $fieldStyleOverride,
     containerStyle: $containerStyleOverride,
-    prefixProps,
-    suffixProps,
     ...textInputProps
   } = props;
 
   const {
     input,
     theme,
-    isFocused,
     hasSuffix,
     disabled,
     hasAccessory,
     hasError,
     $animatedLabelWrapperStyle,
-    $animatedLabelTextStyle,
     $animatedActiveOutlineStyle,
   } = api;
-
-  // =======================
-  // CONSTANTS
-  // =======================
-
-  const { isRTL } = I18nManager.getConstants();
 
   // =======================
   // THEME TOKENS
   // =======================
 
   const {
-    colors: { onSurface, onSurfaceVariant },
+    colors: { onSurface },
   } = theme;
-
-  const labelColor = getLabelColor({
-    theme,
-    status: props.status,
-    isFocused,
-    disabled,
-  });
 
   const outlineColor = getOutlineColor({
     theme,
@@ -109,14 +69,14 @@ export const getFilledTextFieldData = (
 
   const fieldBackgroundColor = getFieldBackgroundColor({ theme, disabled });
 
-  const supportingTextColor = getSupportingTextColor({
-    theme,
-    status: props.status,
-    disabled,
-  });
+  // =======================
+  // SHARED STYLES
+  // =======================
+
+  const shared = getSharedTextFieldStyleData(api, props);
 
   // =======================
-  // STYLES
+  // VARIANT-SPECIFIC STYLES
   // =======================
 
   const $animatedLabelWrapperStyles: StyleProp<
@@ -131,16 +91,9 @@ export const getFilledTextFieldData = (
     $animatedLabelWrapperStyle,
   ];
 
-  const $animatedLabelTextStyles: StyleProp<
-    Animated.WithAnimatedObject<TextStyle> | TextStyle
-  > = [
-    $labelTextStyle,
-    {
-      color: labelColor,
-    },
-    $animatedLabelTextStyle,
-    disabled && $disabledStyle,
-    labelProps?.style,
+  const $containerStyles: StyleProp<ViewStyle> = [
+    $containerStyle,
+    $containerStyleOverride,
   ];
 
   const $fieldStyles = [
@@ -184,39 +137,14 @@ export const getFilledTextFieldData = (
     $animatedActiveOutlineStyle,
   ];
 
-  const $containerStyles: StyleProp<ViewStyle> = [
-    $containerStyle,
-    $containerStyleOverride,
-  ];
-
-  const $supportingTextStyles: StyleProp<TextStyle> = [
-    $supportingTextStyle,
-    {
-      color: supportingTextColor,
-      writingDirection: isRTL ? 'rtl' : 'ltr',
-    },
-    disabled && $disabledStyle,
-    supportingTextProps?.style,
-  ];
-
-  const $counterStyles: StyleProp<TextStyle> = [
-    $counterStyle,
-    {
-      color: supportingTextColor,
-      writingDirection: isRTL ? 'rtl' : 'ltr',
-    },
-    disabled && $disabledStyle,
-    counterProps?.style,
-  ];
-
   const $inputStyles: StyleProp<TextStyle> = [
     $inputStyle,
     {
       flex: 1,
       color: onSurface,
       fontSize: INPUT_FONT_SIZE,
-      textAlign: hasSuffix === isRTL ? 'left' : 'right',
-      writingDirection: isRTL ? 'rtl' : 'ltr',
+      textAlign: hasSuffix === shared.isRTL ? 'left' : 'right',
+      writingDirection: shared.isRTL ? 'rtl' : 'ltr',
     },
     textInputProps.multiline && {
       height: 'auto' as TextStyle['height'],
@@ -229,56 +157,18 @@ export const getFilledTextFieldData = (
     $inputStyleOverride,
   ];
 
-  const $prefixStyles: StyleProp<TextStyle> = [
-    $inputStyle,
-    {
-      fontSize: INPUT_FONT_SIZE,
-      color: onSurfaceVariant,
-      paddingEnd: PREFIX_END_PADDING,
-    },
-    disabled && $disabledStyle,
-    prefixProps?.style,
-  ];
-
-  const $suffixStyles: StyleProp<TextStyle> = [
-    $inputStyle,
-    {
-      fontSize: INPUT_FONT_SIZE,
-      color: onSurfaceVariant,
-      paddingStart: SUFFIX_START_PADDING,
-    },
-    disabled && $disabledStyle,
-    suffixProps?.style,
-  ];
-
-  const $leadingAccessoryStyles = [
-    $leadingAccessoryStyle,
-    disabled && $disabledStyle,
-  ];
-
-  const $trailingAccessoryStyles = [
-    $trailingAccessoryStyle,
-    disabled && $disabledStyle,
-  ];
-
   return {
     input,
     disabled,
     hasError,
     hasSuffix,
     $animatedLabelWrapperStyles,
-    $animatedLabelTextStyles,
+    $containerStyles,
     $fieldStyles,
     $disabledBackgroundStyles,
     $outlineStyles,
     $animatedActiveOutlineStyles,
-    $containerStyles,
-    $supportingTextStyles,
-    $counterStyles,
     $inputStyles,
-    $prefixStyles,
-    $suffixStyles,
-    $leadingAccessoryStyles,
-    $trailingAccessoryStyles,
+    ...shared,
   };
 };

@@ -58,3 +58,9 @@ export const INACTIVE_INDICATOR_SIZE = 1;
 // SHAPE
 // ============
 export const TEXT_FIELD_BORDER_RADIUS = 4;
+
+// ==================
+// LABEL POSITIONING
+// ==================
+export const LABEL_START_OFFSET_WITHOUT_ACCESSORY =
+  TEXT_FIELD_INPUT_WRAPPER_PADDING_HORIZONTAL;

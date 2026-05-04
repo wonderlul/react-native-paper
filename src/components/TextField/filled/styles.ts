@@ -1,4 +1,4 @@
-import { TextStyle, ViewStyle } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 import {
   TEXT_FIELD_BORDER_RADIUS,
@@ -32,13 +32,6 @@ export const $containerStyle: ViewStyle = {
 
 export const $labelWrapperStyle: ViewStyle = {
   position: 'absolute',
-};
-
-export const $labelTextStyle: TextStyle = {
-  fontWeight: '400',
-  includeFontPadding: false,
-  paddingVertical: 0,
-  paddingHorizontal: 0,
 };
 
 export const $disabledBackgroundStyle: ViewStyle = {
