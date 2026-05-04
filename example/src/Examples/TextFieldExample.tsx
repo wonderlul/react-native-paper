@@ -1,265 +1,207 @@
 import * as React from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  type TextStyle,
+  type ViewStyle,
+} from 'react-native';
 
 import {
-  Icon,
+  Divider,
   List,
+  Switch,
+  Text,
   TextField,
+  TouchableRipple,
   type TextFieldAccessoryProps,
+  type TextFieldVariant,
 } from 'react-native-paper';
 
+import { useExampleTheme } from '../hooks/useExampleTheme';
 import ScreenWrapper from '../ScreenWrapper';
 
-const TextFieldExample = () => {
-  const [searchQuery, setSearchQuery] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [filledPassword, setFilledPassword] = React.useState('');
-  const [filledNotes, setFilledNotes] = React.useState('');
-  const [filledPrefix, setFilledPrefix] = React.useState('');
-  const [filledSuffix, setFilledSuffix] = React.useState('');
-  const [outlinedSearchQuery, setOutlinedSearchQuery] = React.useState('');
-  const [outlinedText, setOutlinedText] = React.useState('');
-  const [outlinedPassword, setOutlinedPassword] = React.useState('');
-  const [outlinedNotes, setOutlinedNotes] = React.useState('');
-  const [outlinedPrefix, setOutlinedPrefix] = React.useState('');
-  const [outlinedSuffix, setOutlinedSuffix] = React.useState('');
-  const [errorField, setErrorField] = React.useState('invalid@');
-  const [filledIconQuery, setFilledIconQuery] = React.useState('');
-  const [outlinedIconQuery, setOutlinedIconQuery] = React.useState('');
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
 
-  const ClearFilledSearchAccessory = ({
-    style,
-    editable,
-  }: TextFieldAccessoryProps) => {
-    return (
-      <Pressable
-        style={style}
-        disabled={!editable}
-        onPress={() => setSearchQuery('')}
-        accessibilityRole="button"
-        accessibilityLabel="Clear text"
-      >
-        <Icon source="close" size={24} />
-      </Pressable>
-    );
+type DemoControls = {
+  error: boolean;
+  disabled: boolean;
+  leadingIcon: boolean;
+  trailingIcon: boolean;
+  counter: boolean;
+  showPrefix: boolean;
+  showSuffix: boolean;
+  multiline: boolean;
+};
+
+type DemoModifiers = {
+  label: string;
+  helperText: string;
+  placeholder: string;
+  prefix: string;
+  suffix: string;
+};
+
+// ---------------------------------------------------------------------------
+// TextFieldDemo
+// ---------------------------------------------------------------------------
+
+type TextFieldDemoProps = {
+  variant: TextFieldVariant;
+};
+
+const TextFieldDemo = ({ variant }: TextFieldDemoProps) => {
+  const theme = useExampleTheme();
+
+  const [value, setValue] = React.useState('');
+
+  const [controls, setControls] = React.useState<DemoControls>({
+    error: false,
+    disabled: false,
+    leadingIcon: false,
+    trailingIcon: false,
+    counter: false,
+    showPrefix: false,
+    showSuffix: false,
+    multiline: false,
+  });
+
+  const [modifiers, setModifiers] = React.useState<DemoModifiers>({
+    label: 'Label',
+    helperText: 'Supporting text',
+    placeholder: 'Placeholder',
+    prefix: '$',
+    suffix: '/100',
+  });
+
+  const toggleControl = (key: keyof DemoControls) =>
+    setControls((prev) => ({ ...prev, [key]: !prev[key] }));
+
+  const setModifier = (key: keyof DemoModifiers, text: string) =>
+    setModifiers((prev) => ({ ...prev, [key]: text }));
+
+  const status = controls.error
+    ? 'error'
+    : controls.disabled
+    ? 'disabled'
+    : undefined;
+
+  const LeadingIcon = React.useCallback(
+    (props: TextFieldAccessoryProps) => (
+      <TextField.Icon {...props} icon="magnify" />
+    ),
+    []
+  );
+
+  const TrailingIcon = React.useCallback(
+    (props: TextFieldAccessoryProps) => (
+      <TextField.Icon {...props} icon="close" onPress={() => setValue('')} />
+    ),
+    []
+  );
+
+  const inputColor = theme.colors.onSurfaceVariant;
+  const borderColor = theme.colors.outlineVariant;
+
+  const modifierInputStyle: TextStyle = {
+    flex: 1,
+    color: inputColor,
+    fontSize: 14,
+    paddingVertical: 4,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: borderColor,
   };
 
-  const ClearOutlinedSearchAccessory = ({
-    style,
-    editable,
-  }: TextFieldAccessoryProps) => {
-    return (
-      <Pressable
-        style={style}
-        disabled={!editable}
-        onPress={() => setOutlinedSearchQuery('')}
-        accessibilityRole="button"
-        accessibilityLabel="Clear text"
-      >
-        <Icon source="close" size={24} />
-      </Pressable>
-    );
-  };
+  const SWITCH_CONTROLS: { label: string; key: keyof DemoControls }[] = [
+    { label: 'Error', key: 'error' },
+    { label: 'Disabled', key: 'disabled' },
+    { label: 'Leading icon', key: 'leadingIcon' },
+    { label: 'Trailing icon', key: 'trailingIcon' },
+    { label: 'Counter', key: 'counter' },
+    { label: 'Prefix', key: 'showPrefix' },
+    { label: 'Suffix', key: 'showSuffix' },
+    { label: 'Multiline', key: 'multiline' },
+  ];
 
-  const SearchLeadingAccessory = ({ style }: TextFieldAccessoryProps) => {
-    return (
-      <View style={style}>
-        <Icon source="magnify" size={24} />
-      </View>
-    );
-  };
+  const MODIFIER_FIELDS: { label: string; key: keyof DemoModifiers }[] = [
+    { label: 'Label', key: 'label' },
+    { label: 'Helper', key: 'helperText' },
+    { label: 'Placeholder', key: 'placeholder' },
+    { label: 'Prefix', key: 'prefix' },
+    { label: 'Suffix', key: 'suffix' },
+  ];
 
   return (
+    <View style={styles.demoContainer}>
+      {/* Live TextField */}
+      <TextField
+        variant={variant}
+        label={modifiers.label || undefined}
+        placeholder={modifiers.placeholder || undefined}
+        supportingText={modifiers.helperText || undefined}
+        status={status}
+        value={value}
+        onChangeText={setValue}
+        multiline={controls.multiline}
+        counter={controls.counter}
+        maxLength={controls.counter ? 100 : undefined}
+        prefix={controls.showPrefix ? modifiers.prefix : undefined}
+        suffix={controls.showSuffix ? modifiers.suffix : undefined}
+        StartAccessory={controls.leadingIcon ? LeadingIcon : undefined}
+        EndAccessory={controls.trailingIcon ? TrailingIcon : undefined}
+      />
+
+      <Divider style={styles.divider} />
+
+      {/* Controls */}
+      <List.Subheader style={styles.subheader}>Controls</List.Subheader>
+      {SWITCH_CONTROLS.map(({ label, key }) => (
+        <TouchableRipple key={key} onPress={() => toggleControl(key)}>
+          <View style={styles.switchRow}>
+            <Text variant="bodyMedium">{label}</Text>
+            <View pointerEvents="none">
+              <Switch value={controls[key]} />
+            </View>
+          </View>
+        </TouchableRipple>
+      ))}
+
+      <Divider style={styles.divider} />
+
+      {/* Modifiers */}
+      <List.Subheader style={styles.subheader}>Modifiers</List.Subheader>
+      {MODIFIER_FIELDS.map(({ label, key }) => (
+        <View key={key} style={styles.modifierRow}>
+          <Text variant="bodyMedium" style={styles.modifierLabel}>
+            {label}
+          </Text>
+          <TextInput
+            value={modifiers[key]}
+            onChangeText={(text) => setModifier(key, text)}
+            style={modifierInputStyle}
+            placeholderTextColor={theme.colors.outline}
+            placeholder={`Enter ${label.toLowerCase()}…`}
+          />
+        </View>
+      ))}
+    </View>
+  );
+};
+
+// ---------------------------------------------------------------------------
+// TextFieldExample
+// ---------------------------------------------------------------------------
+
+const TextFieldExample = () => {
+  return (
     <ScreenWrapper contentContainerStyle={styles.container}>
-      <List.Section title="Filled" style={styles.section}>
-        <TextField
-          variant="filled"
-          label="With accessories"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-          StartAccessory={SearchLeadingAccessory}
-          EndAccessory={ClearFilledSearchAccessory}
-          placeholder="Search"
-        />
-        <TextField
-          variant="filled"
-          label="TextField.Icon"
-          value={filledIconQuery}
-          onChangeText={setFilledIconQuery}
-          StartAccessory={(props: TextFieldAccessoryProps) => (
-            <TextField.Icon {...props} icon="magnify" />
-          )}
-          EndAccessory={(props: TextFieldAccessoryProps) => (
-            <TextField.Icon
-              {...props}
-              icon="close"
-              onPress={() => setFilledIconQuery('')}
-            />
-          )}
-          placeholder="Search"
-        />
-        <TextField
-          variant="filled"
-          label="Without accessories"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          autoCorrect={false}
-          placeholder="Email"
-        />
-        <TextField
-          variant="filled"
-          label="Email (error)"
-          supportingText="Enter a valid email address."
-          placeholder="name@example.com"
-          status="error"
-          value={errorField}
-          onChangeText={setErrorField}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TextField
-          variant="filled"
-          label="Account (disabled)"
-          supportingText="Contact support to make changes."
-          value="read-only@example.com"
-          editable={false}
-        />
-        <TextField
-          variant="filled"
-          label="Notes (multiline)"
-          supportingText="Optional details for your request."
-          placeholder="Add a note…"
-          value={filledNotes}
-          onChangeText={setFilledNotes}
-          multiline
-          counter
-          maxLength={200}
-        />
-        <TextField
-          variant="filled"
-          label="Password"
-          supportingText="At least 8 characters."
-          placeholder="••••••••"
-          value={filledPassword}
-          onChangeText={setFilledPassword}
-          secureTextEntry
-          textContentType="password"
-        />
-
-        <TextField
-          variant="filled"
-          label="Label"
-          value={filledPrefix}
-          onChangeText={setFilledPrefix}
-          prefix="$"
-          placeholder="0.00"
-          keyboardType="decimal-pad"
-          StartAccessory={SearchLeadingAccessory}
-        />
-        <TextField
-          variant="filled"
-          label="Label"
-          value={filledSuffix}
-          onChangeText={setFilledSuffix}
-          suffix="/100"
-          keyboardType="number-pad"
-          EndAccessory={ClearFilledSearchAccessory}
-        />
+      <List.Section title="Filled">
+        <TextFieldDemo variant="filled" />
       </List.Section>
-
-      <List.Section title="Outlined" style={styles.section}>
-        <TextField
-          variant="outlined"
-          label="With accessories"
-          value={outlinedSearchQuery}
-          onChangeText={setOutlinedSearchQuery}
-          StartAccessory={SearchLeadingAccessory}
-          EndAccessory={ClearOutlinedSearchAccessory}
-          placeholder="Search"
-        />
-        <TextField
-          variant="outlined"
-          label="TextField.Icon"
-          value={outlinedIconQuery}
-          onChangeText={setOutlinedIconQuery}
-          StartAccessory={(props: TextFieldAccessoryProps) => (
-            <TextField.Icon {...props} icon="magnify" />
-          )}
-          EndAccessory={(props: TextFieldAccessoryProps) => (
-            <TextField.Icon
-              {...props}
-              icon="close"
-              onPress={() => setOutlinedIconQuery('')}
-            />
-          )}
-          placeholder="Search"
-        />
-        <TextField
-          variant="outlined"
-          label="Without accessories"
-          value={outlinedText}
-          onChangeText={setOutlinedText}
-        />
-        <TextField
-          variant="outlined"
-          label="Email (error)"
-          supportingText="Enter a valid email address."
-          placeholder="name@example.com"
-          status="error"
-          value={errorField}
-          onChangeText={setErrorField}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TextField
-          variant="outlined"
-          label="Disabled via status"
-          supportingText="This field cannot be edited."
-          value="Disabled"
-          status="disabled"
-        />
-        <TextField
-          variant="outlined"
-          label="Notes (multiline)"
-          supportingText="Optional details for your request."
-          placeholder="Add a note…"
-          value={outlinedNotes}
-          onChangeText={setOutlinedNotes}
-          multiline
-          counter
-          maxLength={200}
-        />
-        <TextField
-          variant="outlined"
-          label="Password"
-          supportingText="At least 8 characters."
-          placeholder="••••••••"
-          value={outlinedPassword}
-          onChangeText={setOutlinedPassword}
-          secureTextEntry
-          textContentType="password"
-        />
-        <TextField
-          variant="outlined"
-          label="Label"
-          value={outlinedPrefix}
-          onChangeText={setOutlinedPrefix}
-          prefix="$"
-          placeholder="0.00"
-          keyboardType="decimal-pad"
-          StartAccessory={SearchLeadingAccessory}
-        />
-        <TextField
-          variant="outlined"
-          label="Label"
-          value={outlinedSuffix}
-          onChangeText={setOutlinedSuffix}
-          suffix="/100"
-          keyboardType="number-pad"
-          EndAccessory={ClearOutlinedSearchAccessory}
-        />
+      <List.Section title="Outlined">
+        <TextFieldDemo variant="outlined" />
       </List.Section>
     </ScreenWrapper>
   );
@@ -267,14 +209,41 @@ const TextFieldExample = () => {
 
 TextFieldExample.title = 'TextField';
 
+// ---------------------------------------------------------------------------
+// Styles
+// ---------------------------------------------------------------------------
+
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
     paddingVertical: 8,
-  },
-  section: {
-    gap: 16,
-  },
+  } satisfies ViewStyle,
+  demoContainer: {
+    gap: 4,
+  } satisfies ViewStyle,
+  divider: {
+    marginVertical: 8,
+  } satisfies ViewStyle,
+  subheader: {
+    paddingHorizontal: 0,
+  } satisfies TextStyle,
+  switchRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+  } satisfies ViewStyle,
+  modifierRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+  } satisfies ViewStyle,
+  modifierLabel: {
+    width: 80,
+  } satisfies TextStyle,
 });
 
 export default TextFieldExample;
