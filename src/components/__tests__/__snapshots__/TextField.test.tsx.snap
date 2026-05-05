@@ -291,6 +291,7 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
             "flexDirection": "row",
             "paddingHorizontal": 16,
           },
+          false,
           undefined,
         ]
       }
@@ -323,7 +324,6 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
               "writingDirection": "ltr",
             },
             undefined,
-            false,
             false,
             undefined,
           ]
@@ -794,6 +794,7 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
             "flexDirection": "row",
             "paddingHorizontal": 16,
           },
+          false,
           undefined,
         ]
       }
@@ -826,7 +827,6 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
               "writingDirection": "ltr",
             },
             undefined,
-            false,
             false,
             undefined,
           ]
@@ -1136,6 +1136,7 @@ exports[`renders filled TextField with label and value 1`] = `
             "flexDirection": "row",
             "paddingHorizontal": 16,
           },
+          false,
           undefined,
         ]
       }
@@ -1168,7 +1169,6 @@ exports[`renders filled TextField with label and value 1`] = `
               "writingDirection": "ltr",
             },
             undefined,
-            false,
             false,
             undefined,
           ]
@@ -1465,6 +1465,7 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
             "flexDirection": "row",
             "paddingHorizontal": 16,
           },
+          false,
           undefined,
         ]
       }
@@ -1497,7 +1498,6 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
               "writingDirection": "ltr",
             },
             undefined,
-            false,
             false,
             undefined,
           ]
@@ -1955,6 +1955,7 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
             "flexDirection": "row",
             "paddingHorizontal": 16,
           },
+          false,
           undefined,
         ]
       }
@@ -1987,7 +1988,6 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
               "writingDirection": "ltr",
             },
             undefined,
-            false,
             false,
             undefined,
           ]
@@ -2284,6 +2284,7 @@ exports[`renders outlined TextField with label and value 1`] = `
             "flexDirection": "row",
             "paddingHorizontal": 16,
           },
+          false,
           undefined,
         ]
       }
@@ -2316,7 +2317,6 @@ exports[`renders outlined TextField with label and value 1`] = `
               "writingDirection": "ltr",
             },
             undefined,
-            false,
             false,
             undefined,
           ]

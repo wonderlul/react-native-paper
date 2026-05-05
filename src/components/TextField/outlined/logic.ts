@@ -69,6 +69,7 @@ export const getOutlinedTextFieldData = (
 
   const $containerStyles: StyleProp<ViewStyle> = [
     $containerStyle,
+    disabled && $disabledStyle,
     $containerStyleOverride,
   ];
 
@@ -115,7 +116,6 @@ export const getOutlinedTextFieldData = (
     isWeb && {
       outlineStyle: 'none' as TextStyle['outlineStyle'],
     },
-    disabled && $disabledStyle,
     $inputStyleOverride,
   ];
 
