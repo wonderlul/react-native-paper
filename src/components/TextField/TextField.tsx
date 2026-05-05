@@ -14,6 +14,7 @@ import {
 
 import { useTextField } from './logic';
 import { $addendumStyle } from './styles';
+import TextFieldErrorIcon from './TextFieldErrorIcon';
 import type { InternalTheme, ThemeProp } from '../../types';
 
 export type TextFieldVariant = 'filled' | 'outlined';
@@ -306,14 +307,16 @@ function TextField(props: TextFieldProps) {
           )}
         </View>
 
-        {!!TrailingAccessory && (
+        {TrailingAccessory ? (
           <TrailingAccessory
             style={$trailingAccessoryStyles}
             status={status}
             editable={!disabled}
             multiline={!!textInputProps.multiline}
           />
-        )}
+        ) : hasError ? (
+          <TextFieldErrorIcon style={$trailingAccessoryStyles} theme={theme} />
+        ) : null}
       </View>
 
       <View style={$addendumStyle}>

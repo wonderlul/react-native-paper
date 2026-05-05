@@ -21,6 +21,8 @@ export const ACCESSORY_SIZE = 24;
 export const PREFIX_END_PADDING = 2;
 export const SUFFIX_START_PADDING = 2;
 
+export const ERROR_ICON_SIZE = 16;
+
 // ===============
 // TYPOGRAPHY
 // ===============
