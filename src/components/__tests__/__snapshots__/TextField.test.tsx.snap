@@ -1212,6 +1212,7 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
           "paddingVertical": 8,
         },
         undefined,
+        undefined,
       ]
     }
   >
@@ -1696,6 +1697,7 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
           "paddingVertical": 8,
         },
         undefined,
+        undefined,
       ]
     }
   >
@@ -2179,6 +2181,7 @@ exports[`renders outlined TextField with label and value 1`] = `
           "minHeight": 56,
           "paddingVertical": 8,
         },
+        undefined,
         undefined,
       ]
     }

@@ -97,7 +97,7 @@ export const getFilledTextFieldData = (
     $containerStyleOverride,
   ];
 
-  const $fieldStyles = [
+  const $fieldStyles: StyleProp<ViewStyle> = [
     $fieldStyle,
     {
       backgroundColor: fieldBackgroundColor,
@@ -148,7 +148,7 @@ export const getFilledTextFieldData = (
       writingDirection: shared.isRTL ? 'rtl' : 'ltr',
     },
     textInputProps.multiline && {
-      height: 'auto' as TextStyle['height'],
+      height: 'auto',
       paddingTop: MULTILINE_PADDING_TOP,
     },
     isWeb && {

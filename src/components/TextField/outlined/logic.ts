@@ -11,6 +11,7 @@ import { getSharedTextFieldStyleData } from '../utils';
 import {
   LABEL_START_OFFSET_WITH_ACCESSORY,
   DISABLED_OUTLINE_OPACITY,
+  MULTILINE_PADDING_TOP,
 } from './constants';
 import {
   $containerStyle,
@@ -73,7 +74,11 @@ export const getOutlinedTextFieldData = (
     $containerStyleOverride,
   ];
 
-  const $fieldStyles = [$fieldStyle, $fieldStyleOverride];
+  const $fieldStyles: StyleProp<ViewStyle> = [
+    $fieldStyle,
+    textInputProps.multiline && { alignItems: 'flex-start' },
+    $fieldStyleOverride,
+  ];
 
   /* The outline is a childless absolutely-positioned View, so applying
      `opacity` here is safe and lets us pass `outlineColor` through unchanged
@@ -111,7 +116,9 @@ export const getOutlinedTextFieldData = (
       writingDirection: shared.isRTL ? 'rtl' : 'ltr',
     },
     textInputProps.multiline && {
-      height: 'auto' as TextStyle['height'],
+      height: 'auto',
+      textAlignVertical: 'top',
+      paddingTop: MULTILINE_PADDING_TOP,
     },
     isWeb && {
       outlineStyle: 'none' as TextStyle['outlineStyle'],
