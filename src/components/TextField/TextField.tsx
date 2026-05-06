@@ -177,7 +177,7 @@ function TextField(props: TextFieldProps) {
     supportingTextProps,
     labelProps,
     variant,
-    pressableStyle,
+    pressableStyle: $pressableStyleOverride,
     fieldStyle,
     containerStyle,
     theme,
@@ -199,7 +199,6 @@ function TextField(props: TextFieldProps) {
     hasSuffix,
     hasCounter,
     hasError,
-    $pressableStyles,
     $leadingAccessoryStyles,
     $trailingAccessoryStyles,
     $fieldStyles,
@@ -228,7 +227,7 @@ function TextField(props: TextFieldProps) {
 
   return (
     <Pressable
-      style={$pressableStyles}
+      style={$pressableStyleOverride}
       onPress={focusInput}
       accessible={false}
       role="none"

@@ -9,8 +9,6 @@ import {
 } from './constants';
 import { tokens } from '../../styles/themes/v3/tokens';
 
-export const $pressableStyle: ViewStyle = {};
-
 export const $inputStyle: StyleProp<TextStyle> = {
   paddingVertical: 0,
   paddingHorizontal: 0,

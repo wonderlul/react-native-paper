@@ -29,7 +29,6 @@ import {
   ACTIVE_LABEL_TOP_POSITION as OUTLINED_ACTIVE_LABEL_TOP,
 } from './outlined/constants';
 import { getOutlinedTextFieldData } from './outlined/logic';
-import { $pressableStyle } from './styles';
 import type { TextFieldProps, TextFieldSharedApi } from './TextField';
 import { getAccentColors } from './utils';
 import { useInternalTheme } from '../../core/theming';
@@ -38,7 +37,6 @@ export const useTextField = (props: TextFieldProps) => {
   const {
     ref,
     variant = 'filled',
-    pressableStyle: $pressableStyleOverride,
     theme: themeOverride,
     onFocus,
     onBlur,
@@ -144,12 +142,9 @@ export const useTextField = (props: TextFieldProps) => {
   // STYLES
   // =======================
 
-  const $pressableStyles = [$pressableStyle, $pressableStyleOverride];
-
   const data = {
     hasPrefix,
     hasCounter,
-    $pressableStyles,
     $placeholderTextColor,
     $selectionColor,
     $cursorColor,

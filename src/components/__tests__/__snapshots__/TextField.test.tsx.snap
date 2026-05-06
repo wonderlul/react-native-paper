@@ -32,12 +32,6 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   role="none"
-  style={
-    [
-      {},
-      undefined,
-    ]
-  }
 >
   <View
     style={
@@ -535,12 +529,6 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   role="none"
-  style={
-    [
-      {},
-      undefined,
-    ]
-  }
 >
   <View
     style={
@@ -1038,12 +1026,6 @@ exports[`renders filled TextField with label and value 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   role="none"
-  style={
-    [
-      {},
-      undefined,
-    ]
-  }
 >
   <View
     style={
@@ -1219,12 +1201,6 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   role="none"
-  style={
-    [
-      {},
-      undefined,
-    ]
-  }
 >
   <View
     style={
@@ -1709,12 +1685,6 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   role="none"
-  style={
-    [
-      {},
-      undefined,
-    ]
-  }
 >
   <View
     style={
@@ -2199,12 +2169,6 @@ exports[`renders outlined TextField with label and value 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   role="none"
-  style={
-    [
-      {},
-      undefined,
-    ]
-  }
 >
   <View
     style={
