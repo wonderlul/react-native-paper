@@ -41,6 +41,7 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
           "borderTopStartRadius": 4,
           "flexDirection": "row",
           "minHeight": 56,
+          "overflow": "hidden",
           "paddingVertical": 8,
         },
         {
@@ -684,6 +685,7 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
           "borderTopStartRadius": 4,
           "flexDirection": "row",
           "minHeight": 56,
+          "overflow": "hidden",
           "paddingVertical": 8,
         },
         {
@@ -1327,6 +1329,7 @@ exports[`renders filled TextField with label and value 1`] = `
           "borderTopStartRadius": 4,
           "flexDirection": "row",
           "minHeight": 56,
+          "overflow": "hidden",
           "paddingVertical": 8,
         },
         {

@@ -14,6 +14,7 @@ export const $fieldStyle: ViewStyle = {
   paddingVertical: TEXT_FIELD_PADDING_VERTICAL,
   borderTopStartRadius: TEXT_FIELD_BORDER_RADIUS,
   borderTopEndRadius: TEXT_FIELD_BORDER_RADIUS,
+  overflow: 'hidden',
 };
 
 export const $outlineStyle: ViewStyle = {
@@ -41,6 +42,4 @@ export const $disabledBackgroundStyle: ViewStyle = {
   right: 0,
   bottom: 0,
   opacity: DISABLED_CONTAINER_OPACITY,
-  borderTopStartRadius: TEXT_FIELD_BORDER_RADIUS,
-  borderTopEndRadius: TEXT_FIELD_BORDER_RADIUS,
 };
