@@ -3,8 +3,11 @@ import { I18nManager, StyleSheet, TextInput, View } from 'react-native';
 
 import { fireEvent, render } from '@testing-library/react-native';
 
+import { tokens } from '../../styles/themes/v3/tokens';
 import TextField from '../TextField';
 import type { TextFieldAccessoryProps } from '../TextField/TextField';
+
+const { stateOpacity } = tokens.md.ref;
 
 const defaultI18nIsRTL = I18nManager.isRTL;
 
@@ -257,6 +260,55 @@ it('marks the input as aria-disabled when status is disabled', () => {
   expect(getByTestId('tf-input').props['aria-disabled']).toBe(true);
 });
 
+it('marks the input as aria-invalid and aria-disabled when status is error and disabled', () => {
+  const { getByTestId } = render(
+    <TextField
+      label="Email"
+      value="x"
+      onChangeText={() => {}}
+      status={['error', 'disabled']}
+      testID="tf-input"
+    />
+  );
+
+  const input = getByTestId('tf-input');
+  expect(input.props['aria-invalid']).toBe(true);
+  expect(input.props['aria-disabled']).toBe(true);
+});
+
+it('applies disabled opacity to the TextInput when status is disabled (filled)', () => {
+  const { getByTestId } = render(
+    <TextField
+      label="Email"
+      value="x"
+      onChangeText={() => {}}
+      status="disabled"
+      testID="tf-input-dis"
+    />
+  );
+
+  expect(
+    StyleSheet.flatten(getByTestId('tf-input-dis').props.style)
+  ).toMatchObject({ opacity: stateOpacity.disabled });
+});
+
+it('applies disabled opacity to the TextInput when status is disabled (outlined)', () => {
+  const { getByTestId } = render(
+    <TextField
+      variant="outlined"
+      label="Email"
+      value="x"
+      onChangeText={() => {}}
+      status="disabled"
+      testID="tf-input-dis-out"
+    />
+  );
+
+  expect(
+    StyleSheet.flatten(getByTestId('tf-input-dis-out').props.style)
+  ).toMatchObject({ opacity: stateOpacity.disabled });
+});
+
 it('forwards TextInput props such as testID', () => {
   const { getByTestId } = render(
     <TextField
@@ -496,6 +548,29 @@ it('passes status, editable, and multiline to accessories', () => {
     editable: false,
     multiline: true,
   });
+});
+
+it('passes compound status array to accessories', () => {
+  const startAccessoryProps: TextFieldAccessoryProps[] = [];
+
+  function StartAccessory(props: TextFieldAccessoryProps) {
+    startAccessoryProps.push(props);
+    return <View testID="start-acc-compound" />;
+  }
+
+  const { getByTestId } = render(
+    <TextField
+      label="Search"
+      value=""
+      onChangeText={() => {}}
+      status={['error', 'disabled']}
+      StartAccessory={StartAccessory}
+    />
+  );
+
+  expect(getByTestId('start-acc-compound')).toBeTruthy();
+  expect(startAccessoryProps[0].status).toEqual(['error', 'disabled']);
+  expect(startAccessoryProps[0].editable).toBe(false);
 });
 
 it('applies supportingTextProps to the supporting Text', () => {

@@ -26,7 +26,7 @@ import {
 } from './outlined/constants';
 import { getOutlinedTextFieldData } from './outlined/logic';
 import type { TextFieldProps, TextFieldSharedApi } from './TextField';
-import { getAccentColors } from './utils';
+import { getAccentColors, parseStatus } from './utils';
 import { useInternalTheme } from '../../core/theming';
 
 export const useTextField = (props: TextFieldProps) => {
@@ -55,10 +55,10 @@ export const useTextField = (props: TextFieldProps) => {
   // =======================
 
   const { isRTL } = I18nManager.getConstants();
-  const disabled = props.editable === false || props.status === 'disabled';
+  const { hasError, disabled: isDisabled } = parseStatus(props.status);
+  const disabled = props.editable === false || isDisabled;
   const isFloating = isFocused || !!props.value;
   const hasAccessory = isRTL ? !!props.EndAccessory : !!props.StartAccessory;
-  const hasError = props.status === 'error';
   const hasPrefix = !!props.prefix && isFloating;
   const hasSuffix = !!props.suffix && isFloating;
   const hasCounter = props.counter && !!props.maxLength;

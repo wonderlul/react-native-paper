@@ -15,8 +15,25 @@ import {
   $supportingTextStyle,
   $trailingAccessoryStyle,
 } from './styles';
-import type { TextFieldProps, TextFieldSharedApi } from './TextField';
+import type {
+  TextFieldProps,
+  TextFieldSharedApi,
+  TextFieldStatus,
+} from './TextField';
 import type { InternalTheme } from '../../types';
+
+export const parseStatus = (
+  status: TextFieldStatus | undefined
+): { hasError: boolean; disabled: boolean } => {
+  if (!status) return { hasError: false, disabled: false };
+
+  const list = typeof status === 'string' ? [status] : status;
+
+  return {
+    hasError: list.includes('error'),
+    disabled: list.includes('disabled'),
+  };
+};
 
 export const getAccentColors = ({
   theme,
@@ -35,25 +52,24 @@ export const getAccentColors = ({
 
 export const getLabelColor = ({
   theme,
-  status,
+  hasError,
   isFocused,
   disabled,
 }: {
   theme: InternalTheme;
   isFocused: boolean;
-  status?: 'error' | 'disabled';
+  hasError: boolean;
   disabled: boolean;
 }) => {
   const {
     colors: { error, primary, onSurface, onSurfaceVariant },
   } = theme;
 
+  if (hasError) {
+    return error;
+  }
   if (disabled) {
     return onSurface;
-  }
-
-  if (status === 'error') {
-    return error;
   }
   if (isFocused) {
     return primary;
@@ -63,23 +79,22 @@ export const getLabelColor = ({
 
 export const getSupportingTextColor = ({
   theme,
-  status,
+  hasError,
   disabled,
 }: {
   theme: InternalTheme;
-  status?: 'error' | 'disabled';
+  hasError: boolean;
   disabled: boolean;
 }) => {
   const {
     colors: { error, onSurface, onSurfaceVariant },
   } = theme;
 
+  if (hasError) {
+    return error;
+  }
   if (disabled) {
     return onSurface;
-  }
-
-  if (status === 'error') {
-    return error;
   }
   return onSurfaceVariant;
 };
@@ -108,15 +123,17 @@ export const getFieldBackgroundColor = ({
 export const getIconColor = ({
   theme,
   color,
-  status,
+  hasError,
+  disabled,
 }: {
   theme: InternalTheme;
   color?: string;
-  status?: 'error' | 'disabled';
+  hasError: boolean;
+  disabled: boolean;
 }) => {
   if (color) return color;
-  if (status === 'error') return theme.colors.error;
-  if (status === 'disabled') return theme.colors.onSurface;
+  if (hasError) return theme.colors.error;
+  if (disabled) return theme.colors.onSurface;
   return theme.colors.onSurfaceVariant;
 };
 
@@ -134,9 +151,8 @@ export const getSharedTextFieldStyleData = (
 ) => {
   const { isRTL } = I18nManager.getConstants();
 
-  const { theme, disabled, isFocused, $animatedLabelTextStyle } = api;
+  const { theme, disabled, hasError, isFocused, $animatedLabelTextStyle } = api;
   const {
-    status,
     labelProps,
     supportingTextProps,
     counterProps,
@@ -144,10 +160,10 @@ export const getSharedTextFieldStyleData = (
     suffixProps,
   } = props;
 
-  const labelColor = getLabelColor({ theme, status, isFocused, disabled });
+  const labelColor = getLabelColor({ theme, hasError, isFocused, disabled });
   const supportingTextColor = getSupportingTextColor({
     theme,
-    status,
+    hasError,
     disabled,
   });
   const {

@@ -8,24 +8,24 @@ import type { InternalTheme } from '../../../types';
  */
 export const getOutlineColor = ({
   theme,
-  status,
+  hasError,
   isFocused,
   disabled,
 }: {
   theme: InternalTheme;
   isFocused: boolean;
-  status?: 'error' | 'disabled';
+  hasError: boolean;
   disabled: boolean;
 }) => {
   const {
     colors: { error, onSurface, primary, outline },
   } = theme;
 
+  if (hasError) {
+    return error;
+  }
   if (disabled) {
     return onSurface;
-  }
-  if (status === 'error') {
-    return error;
   }
   if (isFocused) {
     return primary;

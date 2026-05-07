@@ -57,14 +57,14 @@ export const getFilledTextFieldData = (
 
   const outlineColor = getOutlineColor({
     theme,
-    status: props.status,
+    hasError,
     isFocused: false,
     disabled,
   });
 
   const activeOutlineColor = getOutlineColor({
     theme,
-    status: props.status,
+    hasError,
     isFocused: true,
     disabled,
   });
@@ -156,6 +156,7 @@ export const getFilledTextFieldData = (
     isWeb && {
       outlineStyle: 'none' as TextStyle['outlineStyle'],
     },
+    disabled && $disabledStyle,
     $inputStyleOverride,
   ];
 

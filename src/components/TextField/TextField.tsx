@@ -20,11 +20,13 @@ import type { InternalTheme, ThemeProp } from '../../types';
 
 export type TextFieldVariant = 'filled' | 'outlined';
 
+export type TextFieldStatus = 'error' | 'disabled' | ('error' | 'disabled')[];
+
 export interface TextFieldAccessoryProps {
   style: StyleProp<ViewStyle>;
-  status?: 'error' | 'disabled';
   multiline: boolean;
   editable: boolean;
+  status?: TextFieldStatus;
 }
 
 export type TextFieldSharedApi = {
@@ -51,9 +53,10 @@ export interface TextFieldProps extends TextInputProps {
    */
   variant?: TextFieldVariant;
   /**
-   * A style modifier for different input states.
+   * A style modifier for different input states. Accepts an array so both
+   * `'error'` and `'disabled'` can be active simultaneously.
    */
-  status?: 'error' | 'disabled';
+  status?: TextFieldStatus;
   /**
    * The label text to display above the input.
    */

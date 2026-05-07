@@ -7,7 +7,7 @@ import type { IconSource } from '../Icon';
 import { ACCESSORY_SIZE } from './constants';
 import { $iconStyle, $iconWrapperStyle } from './styles';
 import type { TextFieldAccessoryProps } from './TextField';
-import { getIconColor } from './utils';
+import { getIconColor, parseStatus } from './utils';
 import IconButton from '../IconButton/IconButton';
 
 export interface TextFieldIconProps extends TextFieldAccessoryProps {
@@ -82,12 +82,15 @@ const TextFieldIcon = ({
 }: TextFieldIconProps) => {
   const theme = useInternalTheme(themeOverride);
 
+  const { hasError, disabled } = parseStatus(status);
+
   const iconSize = size ?? ACCESSORY_SIZE;
 
   const iconColor = getIconColor({
     theme,
     color,
-    status,
+    hasError,
+    disabled,
   });
 
   const onPressHandler = editable ? onPress : undefined;

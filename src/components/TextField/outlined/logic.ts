@@ -125,6 +125,7 @@ export const getOutlinedTextFieldData = (
     isWeb && {
       outlineStyle: 'none' as TextStyle['outlineStyle'],
     },
+    disabled && $disabledStyle,
     $inputStyleOverride,
   ];
 
