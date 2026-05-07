@@ -31,6 +31,7 @@ export const $supportingTextStyle: TextStyle = {
 
 export const $counterStyle: TextStyle = {
   marginTop: SUPPORTING_TEXT_MARGIN_TOP,
+  marginStart: 'auto',
   paddingHorizontal: TEXT_FIELD_INPUT_WRAPPER_PADDING_HORIZONTAL,
   fontSize: SUPPORTING_TEXT_FONT_SIZE,
   fontWeight: '400',
