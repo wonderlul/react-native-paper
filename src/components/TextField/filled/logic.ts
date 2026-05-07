@@ -10,7 +10,11 @@ import {
   isWeb,
 } from '../constants';
 import { $disabledStyle, $inputStyle } from '../styles';
-import type { TextFieldProps, TextFieldSharedApi } from '../TextField';
+import type {
+  FilledTextFieldHookData,
+  TextFieldProps,
+  TextFieldSharedApi,
+} from '../TextField';
 import { getFieldBackgroundColor, getSharedTextFieldStyleData } from '../utils';
 import {
   LABEL_START_OFFSET_WITH_ACCESSORY,
@@ -28,7 +32,7 @@ import { getOutlineColor } from './utils';
 export const getFilledTextFieldData = (
   api: TextFieldSharedApi,
   props: TextFieldProps
-) => {
+): FilledTextFieldHookData => {
   const {
     style: $inputStyleOverride,
     fieldStyle: $fieldStyleOverride,

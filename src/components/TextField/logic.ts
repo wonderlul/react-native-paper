@@ -25,11 +25,15 @@ import {
   ACTIVE_LABEL_TOP_POSITION as OUTLINED_ACTIVE_LABEL_TOP,
 } from './outlined/constants';
 import { getOutlinedTextFieldData } from './outlined/logic';
-import type { TextFieldProps, TextFieldSharedApi } from './TextField';
+import type {
+  TextFieldHookReturn,
+  TextFieldProps,
+  TextFieldSharedApi,
+} from './TextField';
 import { getAccentColors, parseStatus } from './utils';
 import { useInternalTheme } from '../../core/theming';
 
-export const useTextField = (props: TextFieldProps) => {
+export const useTextField = (props: TextFieldProps): TextFieldHookReturn => {
   const {
     ref,
     variant = 'filled',
@@ -61,7 +65,7 @@ export const useTextField = (props: TextFieldProps) => {
   const hasAccessory = isRTL ? !!props.EndAccessory : !!props.StartAccessory;
   const hasPrefix = !!props.prefix && isFloating;
   const hasSuffix = !!props.suffix && isFloating;
-  const hasCounter = props.counter && !!props.maxLength;
+  const hasCounter = !!(props.counter && props.maxLength);
 
   // =======================
   // THEME TOKENS

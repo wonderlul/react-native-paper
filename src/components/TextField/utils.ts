@@ -1,4 +1,4 @@
-import { I18nManager, StyleProp, TextStyle } from 'react-native';
+import { I18nManager, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import { AnimatedStyle } from 'react-native-reanimated';
 
@@ -19,6 +19,7 @@ import type {
   TextFieldProps,
   TextFieldSharedApi,
   TextFieldStatus,
+  SharedTextFieldStyleData,
 } from './TextField';
 import type { InternalTheme } from '../../types';
 
@@ -148,7 +149,7 @@ export const getIconColor = ({
 export const getSharedTextFieldStyleData = (
   api: TextFieldSharedApi,
   props: TextFieldProps
-) => {
+): SharedTextFieldStyleData => {
   const { isRTL } = I18nManager.getConstants();
 
   const { theme, disabled, hasError, isFocused, $animatedLabelTextStyle } = api;
@@ -222,12 +223,12 @@ export const getSharedTextFieldStyleData = (
     suffixProps?.style,
   ];
 
-  const $leadingAccessoryStyles = [
+  const $leadingAccessoryStyles: StyleProp<ViewStyle> = [
     $leadingAccessoryStyle,
     disabled && $disabledStyle,
   ];
 
-  const $trailingAccessoryStyles = [
+  const $trailingAccessoryStyles: StyleProp<ViewStyle> = [
     $trailingAccessoryStyle,
     disabled && $disabledStyle,
   ];

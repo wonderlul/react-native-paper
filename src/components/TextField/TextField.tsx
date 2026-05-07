@@ -1,5 +1,8 @@
 import React, { ComponentType } from 'react';
 import {
+  BlurEvent,
+  ColorValue,
+  FocusEvent,
   Pressable,
   StyleProp,
   Text,
@@ -40,6 +43,73 @@ export type TextFieldSharedApi = {
   $animatedLabelWrapperStyle: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
   $animatedLabelTextStyle: StyleProp<AnimatedStyle<StyleProp<TextStyle>>>;
   $animatedActiveOutlineStyle?: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
+};
+
+export type SharedTextFieldStyleData = {
+  isRTL: boolean;
+  $animatedLabelTextStyles: StyleProp<AnimatedStyle<StyleProp<TextStyle>>>;
+  $supportingTextStyles: StyleProp<TextStyle>;
+  $counterStyles: StyleProp<TextStyle>;
+  $prefixStyles: StyleProp<TextStyle>;
+  $suffixStyles: StyleProp<TextStyle>;
+  $leadingAccessoryStyles: StyleProp<ViewStyle>;
+  $trailingAccessoryStyles: StyleProp<ViewStyle>;
+};
+
+export type FilledTextFieldHookData = SharedTextFieldStyleData & {
+  input: React.RefObject<TextInput | null>;
+  disabled: boolean;
+  hasError: boolean;
+  hasSuffix: boolean;
+  $animatedLabelWrapperStyles: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
+  $containerStyles: StyleProp<ViewStyle>;
+  $fieldStyles: StyleProp<ViewStyle>;
+  $disabledBackgroundStyles: StyleProp<ViewStyle> | undefined;
+  $outlineStyles: StyleProp<ViewStyle>;
+  $animatedActiveOutlineStyles: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
+  $inputStyles: StyleProp<TextStyle>;
+};
+
+export type OutlinedTextFieldHookData = SharedTextFieldStyleData & {
+  input: React.RefObject<TextInput | null>;
+  disabled: boolean;
+  hasError: boolean;
+  hasSuffix: boolean;
+  $animatedLabelWrapperStyles: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
+  $containerStyles: StyleProp<ViewStyle>;
+  $fieldStyles: StyleProp<ViewStyle>;
+  $disabledBackgroundStyles: undefined;
+  $outlineStyles: StyleProp<ViewStyle>;
+  $inputStyles: StyleProp<TextStyle>;
+};
+
+export type TextFieldHookReturn = SharedTextFieldStyleData & {
+  input: React.RefObject<TextInput | null>;
+  disabled: boolean;
+  hasPrefix: boolean;
+  hasCounter: boolean;
+  hasSuffix: boolean;
+  hasError: boolean;
+  $placeholderTextColor: ColorValue;
+  $selectionColor: ColorValue;
+  $cursorColor: ColorValue;
+  $animatedActiveOutlineStyles:
+    | StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>
+    | undefined;
+  $animatedContainerStyle: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
+  $animatedLabelWrapperStyles: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
+  $containerStyles: StyleProp<ViewStyle>;
+  $fieldStyles: StyleProp<ViewStyle>;
+  $disabledBackgroundStyles: StyleProp<ViewStyle> | undefined;
+  $outlineStyles: StyleProp<ViewStyle>;
+  $inputStyles: StyleProp<TextStyle>;
+  placeholder: string | undefined;
+  counterText: string;
+  LeadingAccessory: ComponentType<TextFieldAccessoryProps> | undefined;
+  TrailingAccessory: ComponentType<TextFieldAccessoryProps> | undefined;
+  onFocusHandler: (e: FocusEvent) => void;
+  onBlurHandler: (e: BlurEvent) => void;
+  focusInput: () => void;
 };
 
 export interface TextFieldProps extends TextInputProps {
