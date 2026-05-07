@@ -387,6 +387,36 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
       </View>
     </View>
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "alignItems": "flex-end",
+              "flex": 1,
+              "flexDirection": "row",
+              "paddingHorizontal": 16,
+            },
+            false,
+            undefined,
+          ],
+          {
+            "opacity": 1,
+            "transitionDuration": 150,
+            "transitionProperty": "opacity",
+          },
+        ]
+      }
       style={
         [
           {
@@ -397,6 +427,9 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
           },
           false,
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -994,6 +1027,36 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
       </View>
     </View>
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "alignItems": "flex-end",
+              "flex": 1,
+              "flexDirection": "row",
+              "paddingHorizontal": 16,
+            },
+            false,
+            undefined,
+          ],
+          {
+            "opacity": 1,
+            "transitionDuration": 150,
+            "transitionProperty": "opacity",
+          },
+        ]
+      }
       style={
         [
           {
@@ -1004,6 +1067,9 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
           },
           false,
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -1440,6 +1506,36 @@ exports[`renders filled TextField with label and value 1`] = `
       </Text>
     </View>
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "alignItems": "flex-end",
+              "flex": 1,
+              "flexDirection": "row",
+              "paddingHorizontal": 16,
+            },
+            false,
+            undefined,
+          ],
+          {
+            "opacity": 1,
+            "transitionDuration": 150,
+            "transitionProperty": "opacity",
+          },
+        ]
+      }
       style={
         [
           {
@@ -1450,6 +1546,9 @@ exports[`renders filled TextField with label and value 1`] = `
           },
           false,
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -1843,6 +1942,36 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
       </View>
     </View>
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "alignItems": "center",
+              "flex": 1,
+              "flexDirection": "row",
+              "paddingHorizontal": 16,
+            },
+            false,
+            undefined,
+          ],
+          {
+            "opacity": 1,
+            "transitionDuration": 150,
+            "transitionProperty": "opacity",
+          },
+        ]
+      }
       style={
         [
           {
@@ -1853,6 +1982,9 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
           },
           false,
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -2407,6 +2539,36 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
       </View>
     </View>
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "alignItems": "center",
+              "flex": 1,
+              "flexDirection": "row",
+              "paddingHorizontal": 16,
+            },
+            false,
+            undefined,
+          ],
+          {
+            "opacity": 1,
+            "transitionDuration": 150,
+            "transitionProperty": "opacity",
+          },
+        ]
+      }
       style={
         [
           {
@@ -2417,6 +2579,9 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
           },
           false,
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -2810,6 +2975,36 @@ exports[`renders outlined TextField with label and value 1`] = `
       </Text>
     </View>
     <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {},
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "alignItems": "center",
+              "flex": 1,
+              "flexDirection": "row",
+              "paddingHorizontal": 16,
+            },
+            false,
+            undefined,
+          ],
+          {
+            "opacity": 1,
+            "transitionDuration": 150,
+            "transitionProperty": "opacity",
+          },
+        ]
+      }
       style={
         [
           {
@@ -2820,6 +3015,9 @@ exports[`renders outlined TextField with label and value 1`] = `
           },
           false,
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     >

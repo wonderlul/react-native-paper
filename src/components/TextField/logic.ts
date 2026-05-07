@@ -81,6 +81,7 @@ export const useTextField = (props: TextFieldProps) => {
     $animatedLabelWrapperStyle,
     $animatedLabelTextStyle,
     $animatedActiveOutlineStyle,
+    $animatedContainerStyle,
   } = useTextFieldAnimation({
     variant,
     isFloating,
@@ -145,6 +146,7 @@ export const useTextField = (props: TextFieldProps) => {
     $selectionColor,
     $cursorColor,
     $animatedActiveOutlineStyles: undefined,
+    $animatedContainerStyle,
     placeholder,
     counterText,
     LeadingAccessory,
@@ -180,6 +182,7 @@ const useTextFieldAnimation = ({
 }): {
   $animatedLabelWrapperStyle: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
   $animatedLabelTextStyle: StyleProp<AnimatedStyle<StyleProp<TextStyle>>>;
+  $animatedContainerStyle: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
   $animatedActiveOutlineStyle?: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
 } => {
   const activeTop =
@@ -189,6 +192,14 @@ const useTextFieldAnimation = ({
   const fontSize = isFloating
     ? ACTIVE_LABEL_FONT_SIZE
     : INACTIVE_LABEL_FONT_SIZE;
+
+  const $animatedContainerStyle: StyleProp<
+    AnimatedStyle<StyleProp<ViewStyle>>
+  > = {
+    opacity: isFloating ? 1 : 0,
+    transitionProperty: 'opacity',
+    transitionDuration: ANIMATION_DURATION_MS,
+  };
 
   if (variant === 'filled') {
     return {
@@ -207,6 +218,7 @@ const useTextFieldAnimation = ({
         transitionProperty: 'transform',
         transitionDuration: ANIMATION_DURATION_MS,
       },
+      $animatedContainerStyle,
     };
   }
 
@@ -226,5 +238,6 @@ const useTextFieldAnimation = ({
       transitionProperty: 'fontSize',
       transitionDuration: ANIMATION_DURATION_MS,
     },
+    $animatedContainerStyle,
   };
 };

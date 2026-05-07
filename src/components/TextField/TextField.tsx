@@ -208,6 +208,7 @@ function TextField(props: TextFieldProps) {
     $animatedActiveOutlineStyles,
     $animatedLabelWrapperStyles,
     $animatedLabelTextStyles,
+    $animatedContainerStyle,
     $containerStyles,
     $inputStyles,
     $prefixStyles,
@@ -277,7 +278,7 @@ function TextField(props: TextFieldProps) {
           />
         )}
 
-        <View style={$containerStyles}>
+        <Animated.View style={[$containerStyles, $animatedContainerStyle]}>
           {hasPrefix && (
             <Text aria-hidden {...prefixProps} style={$prefixStyles}>
               {prefix}
@@ -305,7 +306,7 @@ function TextField(props: TextFieldProps) {
               {suffix}
             </Text>
           )}
-        </View>
+        </Animated.View>
 
         {TrailingAccessory ? (
           <TrailingAccessory
