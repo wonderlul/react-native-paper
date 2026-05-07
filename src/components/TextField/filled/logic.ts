@@ -1,4 +1,6 @@
-import { Animated, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+
+import { AnimatedStyle } from 'react-native-reanimated';
 
 import {
   ACTIVE_INDICATOR_SIZE,
@@ -80,7 +82,7 @@ export const getFilledTextFieldData = (
   // =======================
 
   const $animatedLabelWrapperStyles: StyleProp<
-    Animated.WithAnimatedObject<ViewStyle> | ViewStyle
+    AnimatedStyle<StyleProp<ViewStyle>>
   > = [
     $labelWrapperStyle,
     {
@@ -127,7 +129,7 @@ export const getFilledTextFieldData = (
   ];
 
   const $animatedActiveOutlineStyles: StyleProp<
-    Animated.WithAnimatedObject<ViewStyle> | ViewStyle
+    AnimatedStyle<StyleProp<ViewStyle>>
   > = [
     $outlineStyle,
     {

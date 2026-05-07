@@ -1,4 +1,6 @@
-import { Animated, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+
+import { AnimatedStyle } from 'react-native-reanimated';
 
 import {
   INPUT_FONT_SIZE,
@@ -94,7 +96,7 @@ export const getOutlinedTextFieldData = (
   ];
 
   const $animatedLabelWrapperStyles: StyleProp<
-    Animated.WithAnimatedObject<ViewStyle> | ViewStyle
+    AnimatedStyle<StyleProp<ViewStyle>>
   > = [
     $labelWrapperStyle,
     {

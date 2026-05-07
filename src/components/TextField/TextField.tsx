@@ -1,6 +1,5 @@
 import React, { ComponentType } from 'react';
 import {
-  Animated,
   Pressable,
   StyleProp,
   Text,
@@ -11,6 +10,8 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+
+import Animated, { AnimatedStyle } from 'react-native-reanimated';
 
 import { useTextField } from './logic';
 import { $addendumStyle } from './styles';
@@ -34,9 +35,9 @@ export type TextFieldSharedApi = {
   hasAccessory: boolean;
   hasError: boolean;
   hasSuffix: boolean;
-  $animatedLabelWrapperStyle: Animated.WithAnimatedObject<ViewStyle>;
-  $animatedLabelTextStyle: Animated.WithAnimatedObject<TextStyle>;
-  $animatedActiveOutlineStyle?: Animated.WithAnimatedObject<ViewStyle>;
+  $animatedLabelWrapperStyle: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
+  $animatedLabelTextStyle: StyleProp<AnimatedStyle<StyleProp<TextStyle>>>;
+  $animatedActiveOutlineStyle?: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
 };
 
 export interface TextFieldProps extends TextInputProps {

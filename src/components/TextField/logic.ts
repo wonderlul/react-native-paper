@@ -1,19 +1,15 @@
+import { useImperativeHandle, useRef, useState } from 'react';
 import {
-  useEffect,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
-import {
-  Animated,
   BlurEvent,
   FocusEvent,
   I18nManager,
+  StyleProp,
   TextInput,
   TextStyle,
   ViewStyle,
 } from 'react-native';
+
+import { AnimatedStyle } from 'react-native-reanimated';
 
 import {
   ACTIVE_LABEL_FONT_SIZE,
@@ -182,83 +178,53 @@ const useTextFieldAnimation = ({
   isFocused: boolean;
   hasAccessory: boolean;
 }): {
-  $animatedLabelWrapperStyle: Animated.WithAnimatedObject<ViewStyle>;
-  $animatedLabelTextStyle: Animated.WithAnimatedObject<TextStyle>;
-  $animatedActiveOutlineStyle?: Animated.WithAnimatedObject<ViewStyle>;
+  $animatedLabelWrapperStyle: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
+  $animatedLabelTextStyle: StyleProp<AnimatedStyle<StyleProp<TextStyle>>>;
+  $animatedActiveOutlineStyle?: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
 } => {
-  const focusProgress = useRef(new Animated.Value(isFocused ? 1 : 0)).current;
+  const activeTop =
+    variant === 'filled' ? FILLED_ACTIVE_LABEL_TOP : OUTLINED_ACTIVE_LABEL_TOP;
 
-  const floatingProgress = useRef(
-    new Animated.Value(isFloating ? 1 : 0)
-  ).current;
+  const top = isFloating ? activeTop : INACTIVE_LABEL_TOP_POSITION;
+  const fontSize = isFloating
+    ? ACTIVE_LABEL_FONT_SIZE
+    : INACTIVE_LABEL_FONT_SIZE;
 
-  useEffect(() => {
-    Animated.timing(focusProgress, {
-      toValue: isFocused ? 1 : 0,
-      duration: ANIMATION_DURATION_MS,
-      useNativeDriver: true,
-    }).start();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFocused]);
-
-  useEffect(() => {
-    Animated.timing(floatingProgress, {
-      toValue: isFloating ? 1 : 0,
-      duration: ANIMATION_DURATION_MS,
-      useNativeDriver: false,
-    }).start();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFloating]);
-
-  return useMemo(() => {
-    const activeTop =
-      variant === 'filled'
-        ? FILLED_ACTIVE_LABEL_TOP
-        : OUTLINED_ACTIVE_LABEL_TOP;
-
-    const fontSize = floatingProgress.interpolate({
-      inputRange: [0, 1],
-      outputRange: [INACTIVE_LABEL_FONT_SIZE, ACTIVE_LABEL_FONT_SIZE],
-    });
-
-    const top = floatingProgress.interpolate({
-      inputRange: [0, 1],
-      outputRange: [INACTIVE_LABEL_TOP_POSITION, activeTop],
-    });
-
-    if (variant === 'filled') {
-      const scaleX = focusProgress.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, 1],
-      });
-
-      return {
-        $animatedLabelWrapperStyle: { top },
-        $animatedLabelTextStyle: { fontSize },
-        $animatedActiveOutlineStyle: {
-          transform: [{ scaleX }],
-        },
-      };
-    }
-
-    const translateXEnd = hasAccessory
-      ? LABEL_TRANSLATE_X_WITH_ACCESSORY
-      : LABEL_TRANSLATE_X_WITHOUT_ACCESSORY;
-
+  if (variant === 'filled') {
     return {
       $animatedLabelWrapperStyle: {
         top,
-        transform: [
-          {
-            translateX: floatingProgress.interpolate({
-              inputRange: [0, 1],
-              outputRange: [0, translateXEnd],
-            }),
-          },
-        ],
+        transitionProperty: 'top',
+        transitionDuration: ANIMATION_DURATION_MS,
       },
-      $animatedLabelTextStyle: { fontSize },
+      $animatedLabelTextStyle: {
+        fontSize,
+        transitionProperty: 'fontSize',
+        transitionDuration: ANIMATION_DURATION_MS,
+      },
+      $animatedActiveOutlineStyle: {
+        transform: [{ scaleX: isFocused ? 1 : 0 }],
+        transitionProperty: 'transform',
+        transitionDuration: ANIMATION_DURATION_MS,
+      },
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [variant, hasAccessory]);
+  }
+
+  const translateXEnd = hasAccessory
+    ? LABEL_TRANSLATE_X_WITH_ACCESSORY
+    : LABEL_TRANSLATE_X_WITHOUT_ACCESSORY;
+
+  return {
+    $animatedLabelWrapperStyle: {
+      top,
+      transform: [{ translateX: isFloating ? translateXEnd : 0 }],
+      transitionProperty: ['top', 'transform'],
+      transitionDuration: ANIMATION_DURATION_MS,
+    },
+    $animatedLabelTextStyle: {
+      fontSize,
+      transitionProperty: 'fontSize',
+      transitionDuration: ANIMATION_DURATION_MS,
+    },
+  };
 };

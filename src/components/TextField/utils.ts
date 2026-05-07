@@ -1,4 +1,6 @@
-import { Animated, I18nManager, StyleProp, TextStyle } from 'react-native';
+import { I18nManager, StyleProp, TextStyle } from 'react-native';
+
+import { AnimatedStyle } from 'react-native-reanimated';
 
 import {
   INPUT_FONT_SIZE,
@@ -153,7 +155,7 @@ export const getSharedTextFieldStyleData = (
   } = theme;
 
   const $animatedLabelTextStyles: StyleProp<
-    Animated.WithAnimatedObject<TextStyle> | TextStyle
+    AnimatedStyle<StyleProp<TextStyle>>
   > = [
     $inputStyle,
     { color: labelColor },
