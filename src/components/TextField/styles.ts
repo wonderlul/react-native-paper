@@ -40,6 +40,7 @@ export const $counterStyle: TextStyle = {
 export const $trailingAccessoryStyle: ViewStyle = {
   width: ACCESSORY_SIZE,
   marginEnd: TEXT_FIELD_ACCESSORY_MARGIN_HORIZONTAL,
+  alignSelf: 'stretch',
   justifyContent: 'center',
   alignItems: 'center',
 };
@@ -47,6 +48,7 @@ export const $trailingAccessoryStyle: ViewStyle = {
 export const $leadingAccessoryStyle: ViewStyle = {
   width: ACCESSORY_SIZE,
   marginStart: TEXT_FIELD_ACCESSORY_MARGIN_HORIZONTAL,
+  alignSelf: 'stretch',
   justifyContent: 'center',
   alignItems: 'center',
 };
