@@ -7,9 +7,10 @@ import {
   INACTIVE_INDICATOR_SIZE,
   INPUT_FONT_SIZE,
   LABEL_START_OFFSET_WITHOUT_ACCESSORY,
+  TEXT_FIELD_BORDER_RADIUS,
   isWeb,
 } from '../constants';
-import { $disabledStyle, $inputStyle } from '../styles';
+import { $disabledStyle, $fieldStyle, $inputStyle } from '../styles';
 import type {
   FilledTextFieldHookData,
   TextFieldProps,
@@ -22,9 +23,8 @@ import {
 } from './constants';
 import {
   $containerStyle,
-  $fieldStyle,
-  $labelWrapperStyle,
   $disabledBackgroundStyle,
+  $labelWrapperStyle,
   $outlineStyle,
 } from './styles';
 import { getOutlineColor } from './utils';
@@ -107,6 +107,9 @@ export const getFilledTextFieldData = (
     $fieldStyle,
     {
       backgroundColor: fieldBackgroundColor,
+      borderTopStartRadius: TEXT_FIELD_BORDER_RADIUS,
+      borderTopEndRadius: TEXT_FIELD_BORDER_RADIUS,
+      overflow: 'hidden',
     },
     $fieldStyleOverride,
   ];

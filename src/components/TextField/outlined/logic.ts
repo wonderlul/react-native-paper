@@ -5,9 +5,10 @@ import { AnimatedStyle } from 'react-native-reanimated';
 import {
   INPUT_FONT_SIZE,
   LABEL_START_OFFSET_WITHOUT_ACCESSORY,
+  TEXT_FIELD_BORDER_RADIUS,
   isWeb,
 } from '../constants';
-import { $disabledStyle, $inputStyle } from '../styles';
+import { $disabledStyle, $fieldStyle, $inputStyle } from '../styles';
 import type {
   OutlinedTextFieldHookData,
   TextFieldProps,
@@ -15,16 +16,11 @@ import type {
 } from '../TextField';
 import { getSharedTextFieldStyleData } from '../utils';
 import {
-  LABEL_START_OFFSET_WITH_ACCESSORY,
   DISABLED_OUTLINE_OPACITY,
+  LABEL_START_OFFSET_WITH_ACCESSORY,
   MULTILINE_PADDING_TOP,
 } from './constants';
-import {
-  $containerStyle,
-  $fieldStyle,
-  $labelWrapperStyle,
-  $outlineStyle,
-} from './styles';
+import { $containerStyle, $labelWrapperStyle, $outlineStyle } from './styles';
 import { getOutlineColor } from './utils';
 
 export const getOutlinedTextFieldData = (
@@ -82,6 +78,9 @@ export const getOutlinedTextFieldData = (
 
   const $fieldStyles: StyleProp<ViewStyle> = [
     $fieldStyle,
+    {
+      borderRadius: TEXT_FIELD_BORDER_RADIUS,
+    },
     textInputProps.multiline && { alignItems: 'flex-start' },
     $fieldStyleOverride,
   ];

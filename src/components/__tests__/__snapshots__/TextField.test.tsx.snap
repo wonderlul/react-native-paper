@@ -37,15 +37,15 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
     style={
       [
         {
-          "borderTopEndRadius": 4,
-          "borderTopStartRadius": 4,
           "flexDirection": "row",
           "minHeight": 56,
-          "overflow": "hidden",
           "paddingVertical": 8,
         },
         {
           "backgroundColor": "rgba(230, 224, 233, 1)",
+          "borderTopEndRadius": 4,
+          "borderTopStartRadius": 4,
+          "overflow": "hidden",
         },
         undefined,
       ]
@@ -681,15 +681,15 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
     style={
       [
         {
-          "borderTopEndRadius": 4,
-          "borderTopStartRadius": 4,
           "flexDirection": "row",
           "minHeight": 56,
-          "overflow": "hidden",
           "paddingVertical": 8,
         },
         {
           "backgroundColor": "rgba(230, 224, 233, 1)",
+          "borderTopEndRadius": 4,
+          "borderTopStartRadius": 4,
+          "overflow": "hidden",
         },
         undefined,
       ]
@@ -1325,15 +1325,15 @@ exports[`renders filled TextField with label and value 1`] = `
     style={
       [
         {
-          "borderTopEndRadius": 4,
-          "borderTopStartRadius": 4,
           "flexDirection": "row",
           "minHeight": 56,
-          "overflow": "hidden",
           "paddingVertical": 8,
         },
         {
           "backgroundColor": "rgba(230, 224, 233, 1)",
+          "borderTopEndRadius": 4,
+          "borderTopStartRadius": 4,
+          "overflow": "hidden",
         },
         undefined,
       ]
@@ -1645,10 +1645,12 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
     style={
       [
         {
-          "borderRadius": 4,
           "flexDirection": "row",
           "minHeight": 56,
           "paddingVertical": 8,
+        },
+        {
+          "borderRadius": 4,
         },
         undefined,
         undefined,
@@ -2245,10 +2247,12 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
     style={
       [
         {
-          "borderRadius": 4,
           "flexDirection": "row",
           "minHeight": 56,
           "paddingVertical": 8,
+        },
+        {
+          "borderRadius": 4,
         },
         undefined,
         undefined,
@@ -2845,10 +2849,12 @@ exports[`renders outlined TextField with label and value 1`] = `
     style={
       [
         {
-          "borderRadius": 4,
           "flexDirection": "row",
           "minHeight": 56,
           "paddingVertical": 8,
+        },
+        {
+          "borderRadius": 4,
         },
         undefined,
         undefined,

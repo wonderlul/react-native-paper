@@ -5,7 +5,9 @@ import {
   SUPPORTING_TEXT_FONT_SIZE,
   SUPPORTING_TEXT_MARGIN_TOP,
   TEXT_FIELD_ACCESSORY_MARGIN_HORIZONTAL,
+  TEXT_FIELD_HEIGHT,
   TEXT_FIELD_INPUT_WRAPPER_PADDING_HORIZONTAL,
+  TEXT_FIELD_PADDING_VERTICAL,
 } from './constants';
 import { tokens } from '../../styles/themes/v3/tokens';
 
@@ -14,6 +16,12 @@ export const $inputStyle: StyleProp<TextStyle> = {
   paddingHorizontal: 0,
   includeFontPadding: false,
   fontWeight: '400',
+};
+
+export const $fieldStyle: ViewStyle = {
+  flexDirection: 'row',
+  minHeight: TEXT_FIELD_HEIGHT,
+  paddingVertical: TEXT_FIELD_PADDING_VERTICAL,
 };
 
 export const $addendumStyle: ViewStyle = {

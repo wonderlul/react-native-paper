@@ -2,18 +2,9 @@ import { ViewStyle } from 'react-native';
 
 import {
   TEXT_FIELD_BORDER_RADIUS,
-  TEXT_FIELD_HEIGHT,
   TEXT_FIELD_INPUT_WRAPPER_PADDING_HORIZONTAL,
-  TEXT_FIELD_PADDING_VERTICAL,
 } from '../constants';
 import { LABEL_PADDING_HORIZONTAL } from './constants';
-
-export const $fieldStyle: ViewStyle = {
-  minHeight: TEXT_FIELD_HEIGHT,
-  flexDirection: 'row',
-  paddingVertical: TEXT_FIELD_PADDING_VERTICAL,
-  borderRadius: TEXT_FIELD_BORDER_RADIUS,
-};
 
 export const $outlineStyle: ViewStyle = {
   position: 'absolute',
