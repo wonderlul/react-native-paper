@@ -37,6 +37,7 @@ export const getFilledTextFieldData = (
     style: $inputStyleOverride,
     fieldStyle: $fieldStyleOverride,
     containerStyle: $containerStyleOverride,
+    outlineStyle: $outlineStyleOverride,
     ...textInputProps
   } = props;
 
@@ -126,13 +127,14 @@ export const getFilledTextFieldData = (
       ]
     : undefined;
 
-  const $outlineStyles = [
+  const $outlineStyles: StyleProp<ViewStyle> = [
     $outlineStyle,
     {
       height: INACTIVE_INDICATOR_SIZE,
       backgroundColor: outlineColor,
     },
     disabled && $disabledStyle,
+    $outlineStyleOverride,
   ];
 
   const $animatedActiveOutlineStyles: StyleProp<
@@ -144,6 +146,7 @@ export const getFilledTextFieldData = (
       backgroundColor: activeOutlineColor,
     },
     disabled && $disabledStyle,
+    $outlineStyleOverride,
     $animatedActiveOutlineStyle,
   ];
 

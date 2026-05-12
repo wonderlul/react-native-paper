@@ -18,23 +18,9 @@ import {
 import type {
   TextFieldProps,
   TextFieldSharedApi,
-  TextFieldStatus,
   SharedTextFieldStyleData,
 } from './TextField';
 import type { InternalTheme } from '../../types';
-
-export const parseStatus = (
-  status: TextFieldStatus | undefined
-): { hasError: boolean; disabled: boolean } => {
-  if (!status) return { hasError: false, disabled: false };
-
-  const list = typeof status === 'string' ? [status] : status;
-
-  return {
-    hasError: list.includes('error'),
-    disabled: list.includes('disabled'),
-  };
-};
 
 export const getAccentColors = ({
   theme,

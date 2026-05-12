@@ -48,18 +48,20 @@ export const $counterStyle: TextStyle = {
 
 export const $trailingAccessoryStyle: ViewStyle = {
   width: ACCESSORY_SIZE,
-  marginEnd: TEXT_FIELD_ACCESSORY_MARGIN_HORIZONTAL,
-  alignSelf: 'stretch',
+  height: ACCESSORY_SIZE,
+  alignSelf: 'center',
   justifyContent: 'center',
   alignItems: 'center',
+  marginEnd: TEXT_FIELD_ACCESSORY_MARGIN_HORIZONTAL,
 };
 
 export const $leadingAccessoryStyle: ViewStyle = {
   width: ACCESSORY_SIZE,
-  marginStart: TEXT_FIELD_ACCESSORY_MARGIN_HORIZONTAL,
-  alignSelf: 'stretch',
+  height: ACCESSORY_SIZE,
+  alignSelf: 'center',
   justifyContent: 'center',
   alignItems: 'center',
+  marginStart: TEXT_FIELD_ACCESSORY_MARGIN_HORIZONTAL,
 };
 
 export const $disabledStyle: ViewStyle = {

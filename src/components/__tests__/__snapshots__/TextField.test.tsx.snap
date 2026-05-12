@@ -66,6 +66,7 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
             "height": 1,
           },
           false,
+          undefined,
         ]
       }
     />
@@ -94,6 +95,7 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -119,6 +121,7 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -236,7 +239,8 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginStart": 12,
               "width": 24,
@@ -440,7 +444,6 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
         aria-invalid={false}
         aria-label="Search"
         cursorColor="rgba(103, 80, 164, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
@@ -481,7 +484,8 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginEnd": 12,
               "width": 24,
@@ -644,7 +648,7 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
 </View>
 `;
 
-exports[`renders filled TextField with TextField.Icon accessories when status is error 1`] = `
+exports[`renders filled TextField with TextField.Icon accessories when error is true 1`] = `
 <View
   accessibilityState={
     {
@@ -710,6 +714,7 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
             "height": 1,
           },
           false,
+          undefined,
         ]
       }
     />
@@ -738,6 +743,7 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -763,6 +769,7 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -880,7 +887,8 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginStart": 12,
               "width": 24,
@@ -1084,7 +1092,6 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
         aria-invalid={true}
         aria-label="Search"
         cursorColor="rgba(179, 38, 30, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
@@ -1125,7 +1132,8 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginEnd": 12,
               "width": 24,
@@ -1354,6 +1362,7 @@ exports[`renders filled TextField with label and value 1`] = `
             "height": 1,
           },
           false,
+          undefined,
         ]
       }
     />
@@ -1382,6 +1391,7 @@ exports[`renders filled TextField with label and value 1`] = `
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -1407,6 +1417,7 @@ exports[`renders filled TextField with label and value 1`] = `
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -1566,7 +1577,6 @@ exports[`renders filled TextField with label and value 1`] = `
         aria-invalid={false}
         aria-label="Email"
         cursorColor="rgba(103, 80, 164, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
@@ -1674,6 +1684,7 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
             "borderWidth": 1,
           },
           false,
+          undefined,
           undefined,
         ]
       }
@@ -1802,7 +1813,8 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginStart": 12,
               "width": 24,
@@ -2006,7 +2018,6 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
         aria-invalid={false}
         aria-label="Search"
         cursorColor="rgba(103, 80, 164, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
@@ -2047,7 +2058,8 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginEnd": 12,
               "width": 24,
@@ -2210,7 +2222,7 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
 </View>
 `;
 
-exports[`renders outlined TextField with TextField.Icon accessories when status is error 1`] = `
+exports[`renders outlined TextField with TextField.Icon accessories when error is true 1`] = `
 <View
   accessibilityState={
     {
@@ -2276,6 +2288,7 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
             "borderWidth": 1,
           },
           false,
+          undefined,
           undefined,
         ]
       }
@@ -2404,7 +2417,8 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginStart": 12,
               "width": 24,
@@ -2608,7 +2622,6 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
         aria-invalid={true}
         aria-label="Search"
         cursorColor="rgba(179, 38, 30, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
@@ -2649,7 +2662,8 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginEnd": 12,
               "width": 24,
@@ -2879,6 +2893,7 @@ exports[`renders outlined TextField with label and value 1`] = `
           },
           false,
           undefined,
+          undefined,
         ]
       }
     />
@@ -3048,7 +3063,6 @@ exports[`renders outlined TextField with label and value 1`] = `
         aria-invalid={false}
         aria-label="Password"
         cursorColor="rgba(103, 80, 164, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}

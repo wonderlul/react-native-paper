@@ -31,6 +31,7 @@ export const getOutlinedTextFieldData = (
     style: $inputStyleOverride,
     fieldStyle: $fieldStyleOverride,
     containerStyle: $containerStyleOverride,
+    outlineStyle: $outlineStyleOverride,
     ...textInputProps
   } = props;
 
@@ -88,7 +89,7 @@ export const getOutlinedTextFieldData = (
   /* The outline is a childless absolutely-positioned View, so applying
      `opacity` here is safe and lets us pass `outlineColor` through unchanged
      (including PlatformColor values on Android). */
-  const $outlineStyles = [
+  const $outlineStyles: StyleProp<ViewStyle> = [
     $outlineStyle,
     {
       borderWidth: isFocused ? 2 : 1,
@@ -96,6 +97,7 @@ export const getOutlinedTextFieldData = (
     },
     disabled && { opacity: DISABLED_OUTLINE_OPACITY },
     $fieldStyleOverride,
+    $outlineStyleOverride,
   ];
 
   const $animatedLabelWrapperStyles: StyleProp<
