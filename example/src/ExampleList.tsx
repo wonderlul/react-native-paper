@@ -44,7 +44,6 @@ import TeamDetails from './Examples/TeamDetails';
 import TeamsList from './Examples/TeamsList';
 import TextExample from './Examples/TextExample';
 import TextFieldExample from './Examples/TextFieldExample';
-import TextInputExample from './Examples/TextInputExample';
 import ThemeExample from './Examples/ThemeExample';
 import ThemingWithReactNavigation from './Examples/ThemingWithReactNavigation';
 import ToggleButtonExample from './Examples/ToggleButtonExample';
@@ -90,7 +89,6 @@ export const mainExamples: Record<
   surface: SurfaceExample,
   switch: SwitchExample,
   text: TextExample,
-  textInput: TextInputExample,
   textField: TextFieldExample,
   toggleButton: ToggleButtonExample,
   tooltipExample: TooltipExample,
