@@ -44,7 +44,6 @@ export const getFilledTextFieldData = (
   const {
     input,
     theme,
-    isFocused,
     hasSuffix,
     disabled,
     hasAccessory,
@@ -64,7 +63,14 @@ export const getFilledTextFieldData = (
   const outlineColor = getOutlineColor({
     theme,
     hasError,
-    isFocused,
+    isFocused: false,
+    disabled,
+  });
+
+  const activeOutlineColor = getOutlineColor({
+    theme,
+    hasError,
+    isFocused: true,
     disabled,
   });
 
@@ -137,7 +143,7 @@ export const getFilledTextFieldData = (
     $outlineStyle,
     {
       height: ACTIVE_INDICATOR_SIZE,
-      backgroundColor: outlineColor,
+      backgroundColor: activeOutlineColor,
     },
     disabled && $disabledStyle,
     $outlineStyleOverride,

@@ -91,7 +91,7 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
             "right": 0,
           },
           {
-            "backgroundColor": "rgba(121, 116, 126, 1)",
+            "backgroundColor": "rgba(103, 80, 164, 1)",
             "height": 2,
           },
           false,
@@ -117,7 +117,7 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
             "right": 0,
           },
           {
-            "backgroundColor": "rgba(121, 116, 126, 1)",
+            "backgroundColor": "rgba(103, 80, 164, 1)",
             "height": 2,
           },
           false,
@@ -1387,7 +1387,7 @@ exports[`renders filled TextField with label and value 1`] = `
             "right": 0,
           },
           {
-            "backgroundColor": "rgba(121, 116, 126, 1)",
+            "backgroundColor": "rgba(103, 80, 164, 1)",
             "height": 2,
           },
           false,
@@ -1413,7 +1413,7 @@ exports[`renders filled TextField with label and value 1`] = `
             "right": 0,
           },
           {
-            "backgroundColor": "rgba(121, 116, 126, 1)",
+            "backgroundColor": "rgba(103, 80, 164, 1)",
             "height": 2,
           },
           false,
