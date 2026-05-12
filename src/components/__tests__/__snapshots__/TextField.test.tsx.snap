@@ -66,6 +66,7 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
             "height": 1,
           },
           false,
+          undefined,
         ]
       }
     />
@@ -90,10 +91,11 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
             "right": 0,
           },
           {
-            "backgroundColor": "rgba(103, 80, 164, 1)",
+            "backgroundColor": "rgba(121, 116, 126, 1)",
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -115,10 +117,11 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
             "right": 0,
           },
           {
-            "backgroundColor": "rgba(103, 80, 164, 1)",
+            "backgroundColor": "rgba(121, 116, 126, 1)",
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -711,6 +714,7 @@ exports[`renders filled TextField with TextField.Icon accessories when error is 
             "height": 1,
           },
           false,
+          undefined,
         ]
       }
     />
@@ -739,6 +743,7 @@ exports[`renders filled TextField with TextField.Icon accessories when error is 
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -764,6 +769,7 @@ exports[`renders filled TextField with TextField.Icon accessories when error is 
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -1356,6 +1362,7 @@ exports[`renders filled TextField with label and value 1`] = `
             "height": 1,
           },
           false,
+          undefined,
         ]
       }
     />
@@ -1380,10 +1387,11 @@ exports[`renders filled TextField with label and value 1`] = `
             "right": 0,
           },
           {
-            "backgroundColor": "rgba(103, 80, 164, 1)",
+            "backgroundColor": "rgba(121, 116, 126, 1)",
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -1405,10 +1413,11 @@ exports[`renders filled TextField with label and value 1`] = `
             "right": 0,
           },
           {
-            "backgroundColor": "rgba(103, 80, 164, 1)",
+            "backgroundColor": "rgba(121, 116, 126, 1)",
             "height": 2,
           },
           false,
+          undefined,
           {
             "transform": [
               {
@@ -1675,6 +1684,7 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
             "borderWidth": 1,
           },
           false,
+          undefined,
           undefined,
         ]
       }
@@ -2279,6 +2289,7 @@ exports[`renders outlined TextField with TextField.Icon accessories when error i
           },
           false,
           undefined,
+          undefined,
         ]
       }
     />
@@ -2881,6 +2892,7 @@ exports[`renders outlined TextField with label and value 1`] = `
             "borderWidth": 1,
           },
           false,
+          undefined,
           undefined,
         ]
       }

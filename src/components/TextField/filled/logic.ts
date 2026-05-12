@@ -37,12 +37,14 @@ export const getFilledTextFieldData = (
     style: $inputStyleOverride,
     fieldStyle: $fieldStyleOverride,
     containerStyle: $containerStyleOverride,
+    outlineStyle: $outlineStyleOverride,
     ...textInputProps
   } = props;
 
   const {
     input,
     theme,
+    isFocused,
     hasSuffix,
     disabled,
     hasAccessory,
@@ -62,14 +64,7 @@ export const getFilledTextFieldData = (
   const outlineColor = getOutlineColor({
     theme,
     hasError,
-    isFocused: false,
-    disabled,
-  });
-
-  const activeOutlineColor = getOutlineColor({
-    theme,
-    hasError,
-    isFocused: true,
+    isFocused,
     disabled,
   });
 
@@ -126,13 +121,14 @@ export const getFilledTextFieldData = (
       ]
     : undefined;
 
-  const $outlineStyles = [
+  const $outlineStyles: StyleProp<ViewStyle> = [
     $outlineStyle,
     {
       height: INACTIVE_INDICATOR_SIZE,
       backgroundColor: outlineColor,
     },
     disabled && $disabledStyle,
+    $outlineStyleOverride,
   ];
 
   const $animatedActiveOutlineStyles: StyleProp<
@@ -141,9 +137,10 @@ export const getFilledTextFieldData = (
     $outlineStyle,
     {
       height: ACTIVE_INDICATOR_SIZE,
-      backgroundColor: activeOutlineColor,
+      backgroundColor: outlineColor,
     },
     disabled && $disabledStyle,
+    $outlineStyleOverride,
     $animatedActiveOutlineStyle,
   ];
 

@@ -180,6 +180,14 @@ export interface TextFieldProps extends TextInputProps {
    * the label and TextInput, excluding accessories).
    */
   containerStyle?: StyleProp<ViewStyle>;
+  /**
+   * Style overrides for the indicator layer (the purely visual border or line
+   * that shows state, not the interactive input).
+   * - `filled` — applied to both the always-visible bottom edge and the
+   *   animated bar that expands on focus.
+   * - `outlined` — applied to the rounded border around the field for both states.
+   */
+  outlineStyle?: StyleProp<ViewStyle>;
   theme?: ThemeProp;
   /**
    * An optional component to render on the start side of the input (leading in LTR).
@@ -251,6 +259,7 @@ function TextField(props: TextFieldProps) {
     pressableStyle: $pressableStyleOverride,
     fieldStyle,
     containerStyle,
+    outlineStyle,
     theme,
     StartAccessory,
     EndAccessory,
@@ -364,9 +373,9 @@ function TextField(props: TextFieldProps) {
             onBlur={onBlurHandler}
             selectionColor={$selectionColor}
             cursorColor={$cursorColor}
+            placeholderTextColor={$placeholderTextColor}
             {...textInputProps}
             placeholder={placeholder}
-            placeholderTextColor={$placeholderTextColor}
             style={$inputStyles}
           />
 

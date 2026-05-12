@@ -329,6 +329,7 @@ it('does not pass TextField-only props through to TextInput', () => {
   expect(input.props.pressableStyle).toBeUndefined();
   expect(input.props.fieldStyle).toBeUndefined();
   expect(input.props.containerStyle).toBeUndefined();
+  expect(input.props.outlineStyle).toBeUndefined();
   expect(input.props.supportingText).toBeUndefined();
   expect(input.props.supportingTextProps).toBeUndefined();
   expect(input.props.prefix).toBeUndefined();
