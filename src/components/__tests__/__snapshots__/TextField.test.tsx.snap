@@ -236,7 +236,8 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginStart": 12,
               "width": 24,
@@ -481,7 +482,8 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginEnd": 12,
               "width": 24,
@@ -880,7 +882,8 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginStart": 12,
               "width": 24,
@@ -1125,7 +1128,8 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginEnd": 12,
               "width": 24,
@@ -1802,7 +1806,8 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginStart": 12,
               "width": 24,
@@ -2047,7 +2052,8 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginEnd": 12,
               "width": 24,
@@ -2404,7 +2410,8 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginStart": 12,
               "width": 24,
@@ -2649,7 +2656,8 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
           [
             {
               "alignItems": "center",
-              "alignSelf": "stretch",
+              "alignSelf": "center",
+              "height": 24,
               "justifyContent": "center",
               "marginEnd": 12,
               "width": 24,
