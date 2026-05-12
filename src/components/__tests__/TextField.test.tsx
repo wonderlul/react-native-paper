@@ -92,13 +92,13 @@ it('renders outlined TextField with TextField.Icon accessories', () => {
   expect(tree).toMatchSnapshot();
 });
 
-it('renders filled TextField with TextField.Icon accessories when status is error', () => {
+it('renders filled TextField with TextField.Icon accessories when error is true', () => {
   const tree = render(
     <TextField
       label="Search"
       value="q"
       onChangeText={() => {}}
-      status="error"
+      error
       StartAccessory={(props: TextFieldAccessoryProps) => (
         <TextField.Icon {...props} icon="magnify" />
       )}
@@ -111,14 +111,14 @@ it('renders filled TextField with TextField.Icon accessories when status is erro
   expect(tree).toMatchSnapshot();
 });
 
-it('renders outlined TextField with TextField.Icon accessories when status is error', () => {
+it('renders outlined TextField with TextField.Icon accessories when error is true', () => {
   const tree = render(
     <TextField
       variant="outlined"
       label="Search"
       value="q"
       onChangeText={() => {}}
-      status="error"
+      error
       StartAccessory={(props: TextFieldAccessoryProps) => (
         <TextField.Icon {...props} icon="magnify" />
       )}
@@ -191,13 +191,13 @@ it('renders supporting text below the field', () => {
   expect(getByText('Use a valid address')).toBeTruthy();
 });
 
-it('sets aria-invalid on the input when status is error', () => {
+it('sets aria-invalid on the input when error is true', () => {
   const { getByTestId } = render(
     <TextField
       label="Email"
       value="bad"
       onChangeText={() => {}}
-      status="error"
+      error
       testID="tf-input"
     />
   );
@@ -205,14 +205,14 @@ it('sets aria-invalid on the input when status is error', () => {
   expect(getByTestId('tf-input').props['aria-invalid']).toBe(true);
 });
 
-it('uses assertive aria-live on supporting text when status is error', () => {
+it('uses assertive aria-live on supporting text when error is true', () => {
   const { getByText } = render(
     <TextField
       label="Email"
       value=""
       onChangeText={() => {}}
       supportingText="Invalid"
-      status="error"
+      error
     />
   );
 
@@ -246,27 +246,14 @@ it('marks the input as aria-disabled when editable is false', () => {
   expect(getByTestId('tf-input').props['aria-disabled']).toBe(true);
 });
 
-it('marks the input as aria-disabled when status is disabled', () => {
+it('marks the input as aria-invalid and aria-disabled when error and editable is false', () => {
   const { getByTestId } = render(
     <TextField
       label="Email"
       value="x"
       onChangeText={() => {}}
-      status="disabled"
-      testID="tf-input"
-    />
-  );
-
-  expect(getByTestId('tf-input').props['aria-disabled']).toBe(true);
-});
-
-it('marks the input as aria-invalid and aria-disabled when status is error and disabled', () => {
-  const { getByTestId } = render(
-    <TextField
-      label="Email"
-      value="x"
-      onChangeText={() => {}}
-      status={['error', 'disabled']}
+      error
+      editable={false}
       testID="tf-input"
     />
   );
@@ -276,13 +263,13 @@ it('marks the input as aria-invalid and aria-disabled when status is error and d
   expect(input.props['aria-disabled']).toBe(true);
 });
 
-it('applies disabled opacity to the TextInput when status is disabled (filled)', () => {
+it('applies disabled opacity to the TextInput when editable is false (filled)', () => {
   const { getByTestId } = render(
     <TextField
       label="Email"
       value="x"
       onChangeText={() => {}}
-      status="disabled"
+      editable={false}
       testID="tf-input-dis"
     />
   );
@@ -292,14 +279,14 @@ it('applies disabled opacity to the TextInput when status is disabled (filled)',
   ).toMatchObject({ opacity: stateOpacity.disabled });
 });
 
-it('applies disabled opacity to the TextInput when status is disabled (outlined)', () => {
+it('applies disabled opacity to the TextInput when editable is false (outlined)', () => {
   const { getByTestId } = render(
     <TextField
       variant="outlined"
       label="Email"
       value="x"
       onChangeText={() => {}}
-      status="disabled"
+      editable={false}
       testID="tf-input-dis-out"
     />
   );
@@ -329,6 +316,7 @@ it('does not pass TextField-only props through to TextInput', () => {
       label="Email"
       value=""
       onChangeText={() => {}}
+      error
       testID="tf-native"
     />
   );
@@ -349,6 +337,7 @@ it('does not pass TextField-only props through to TextInput', () => {
   expect(input.props.suffixProps).toBeUndefined();
   expect(input.props.counter).toBeUndefined();
   expect(input.props.counterProps).toBeUndefined();
+  expect(input.props.error).toBeUndefined();
 });
 
 it('shows a character counter when counter is true and maxLength is set (filled)', () => {
@@ -509,7 +498,7 @@ it('exposes the TextInput instance via ref prop', () => {
   expect(typeof ref.current?.focus).toBe('function');
 });
 
-it('passes status, editable, and multiline to accessories', () => {
+it('passes error, disabled, and multiline to accessories', () => {
   const startAccessoryProps: TextFieldAccessoryProps[] = [];
   const endAccessoryProps: TextFieldAccessoryProps[] = [];
 
@@ -529,7 +518,7 @@ it('passes status, editable, and multiline to accessories', () => {
       value=""
       onChangeText={() => {}}
       multiline
-      status="error"
+      error
       editable={false}
       StartAccessory={StartAccessory}
       EndAccessory={EndAccessory}
@@ -539,23 +528,23 @@ it('passes status, editable, and multiline to accessories', () => {
   expect(getByTestId('start-accessory')).toBeTruthy();
   expect(getByTestId('end-accessory')).toBeTruthy();
   expect(startAccessoryProps[0]).toMatchObject({
-    status: 'error',
-    editable: false,
+    error: true,
+    disabled: true,
     multiline: true,
   });
   expect(endAccessoryProps[0]).toMatchObject({
-    status: 'error',
-    editable: false,
+    error: true,
+    disabled: true,
     multiline: true,
   });
 });
 
-it('passes compound status array to accessories', () => {
+it('passes error to accessories when the field is disabled', () => {
   const startAccessoryProps: TextFieldAccessoryProps[] = [];
 
   function StartAccessory(props: TextFieldAccessoryProps) {
     startAccessoryProps.push(props);
-    return <View testID="start-acc-compound" />;
+    return <View testID="start-acc-error-disabled" />;
   }
 
   const { getByTestId } = render(
@@ -563,14 +552,15 @@ it('passes compound status array to accessories', () => {
       label="Search"
       value=""
       onChangeText={() => {}}
-      status={['error', 'disabled']}
+      error
+      editable={false}
       StartAccessory={StartAccessory}
     />
   );
 
-  expect(getByTestId('start-acc-compound')).toBeTruthy();
-  expect(startAccessoryProps[0].status).toEqual(['error', 'disabled']);
-  expect(startAccessoryProps[0].editable).toBe(false);
+  expect(getByTestId('start-acc-error-disabled')).toBeTruthy();
+  expect(startAccessoryProps[0].error).toBe(true);
+  expect(startAccessoryProps[0].disabled).toBe(true);
 });
 
 it('applies supportingTextProps to the supporting Text', () => {

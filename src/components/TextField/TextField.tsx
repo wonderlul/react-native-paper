@@ -23,13 +23,11 @@ import type { InternalTheme, ThemeProp } from '../../types';
 
 export type TextFieldVariant = 'filled' | 'outlined';
 
-export type TextFieldStatus = 'error' | 'disabled' | ('error' | 'disabled')[];
-
 export interface TextFieldAccessoryProps {
   style: StyleProp<ViewStyle>;
   multiline: boolean;
-  editable: boolean;
-  status?: TextFieldStatus;
+  disabled: boolean;
+  error: boolean;
 }
 
 export type TextFieldSharedApi = {
@@ -123,10 +121,9 @@ export interface TextFieldProps extends TextInputProps {
    */
   variant?: TextFieldVariant;
   /**
-   * A style modifier for different input states. Accepts an array so both
-   * `'error'` and `'disabled'` can be active simultaneously.
+   * When `true`, the field uses error styling and validation semantics (`aria-invalid`).
    */
-  status?: TextFieldStatus;
+  error?: boolean;
   /**
    * The label text to display above the input.
    */
@@ -137,7 +134,7 @@ export interface TextFieldProps extends TextInputProps {
   labelProps?: TextProps;
   /**
    * Supporting text to display below the input (Material Design 3). When
-   * `status` is `error`, this text is styled as an error message.
+   * `error` is `true`, this text is styled as an error message.
    */
   supportingText?: string;
   /**
@@ -213,10 +210,10 @@ export interface TextFieldProps extends TextInputProps {
  *     <TextField.Icon {...props} icon="magnify" />
  *   );
  *
- *   const ClearAccessory = ({ style, editable }) => (
+ *   const ClearAccessory = ({ style, disabled }) => (
  *     <Pressable
  *       style={style}
- *       disabled={!editable}
+ *       disabled={disabled}
  *       onPress={() => setText('')}
  *       accessibilityRole="button"
  *       accessibilityLabel="Clear text"
@@ -245,7 +242,7 @@ function TextField(props: TextFieldProps) {
   /* eslint-disable @typescript-eslint/no-unused-vars -- peel TextField-only props before TextInput spread */
   const {
     ref,
-    status,
+    error,
     label,
     supportingText,
     supportingTextProps,
@@ -345,8 +342,8 @@ function TextField(props: TextFieldProps) {
         {!!LeadingAccessory && (
           <LeadingAccessory
             style={$leadingAccessoryStyles}
-            status={status}
-            editable={!disabled}
+            error={hasError}
+            disabled={disabled}
             multiline={!!textInputProps.multiline}
           />
         )}
@@ -363,7 +360,6 @@ function TextField(props: TextFieldProps) {
             aria-disabled={disabled}
             aria-invalid={hasError}
             ref={input}
-            editable={!disabled}
             onFocus={onFocusHandler}
             onBlur={onBlurHandler}
             selectionColor={$selectionColor}
@@ -384,8 +380,8 @@ function TextField(props: TextFieldProps) {
         {TrailingAccessory ? (
           <TrailingAccessory
             style={$trailingAccessoryStyles}
-            status={status}
-            editable={!disabled}
+            error={hasError}
+            disabled={disabled}
             multiline={!!textInputProps.multiline}
           />
         ) : hasError ? (

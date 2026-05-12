@@ -441,7 +441,6 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
         aria-invalid={false}
         aria-label="Search"
         cursorColor="rgba(103, 80, 164, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
@@ -646,7 +645,7 @@ exports[`renders filled TextField with TextField.Icon accessories 1`] = `
 </View>
 `;
 
-exports[`renders filled TextField with TextField.Icon accessories when status is error 1`] = `
+exports[`renders filled TextField with TextField.Icon accessories when error is true 1`] = `
 <View
   accessibilityState={
     {
@@ -1087,7 +1086,6 @@ exports[`renders filled TextField with TextField.Icon accessories when status is
         aria-invalid={true}
         aria-label="Search"
         cursorColor="rgba(179, 38, 30, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
@@ -1570,7 +1568,6 @@ exports[`renders filled TextField with label and value 1`] = `
         aria-invalid={false}
         aria-label="Email"
         cursorColor="rgba(103, 80, 164, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
@@ -2011,7 +2008,6 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
         aria-invalid={false}
         aria-label="Search"
         cursorColor="rgba(103, 80, 164, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
@@ -2216,7 +2212,7 @@ exports[`renders outlined TextField with TextField.Icon accessories 1`] = `
 </View>
 `;
 
-exports[`renders outlined TextField with TextField.Icon accessories when status is error 1`] = `
+exports[`renders outlined TextField with TextField.Icon accessories when error is true 1`] = `
 <View
   accessibilityState={
     {
@@ -2615,7 +2611,6 @@ exports[`renders outlined TextField with TextField.Icon accessories when status 
         aria-invalid={true}
         aria-label="Search"
         cursorColor="rgba(179, 38, 30, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}
@@ -3056,7 +3051,6 @@ exports[`renders outlined TextField with label and value 1`] = `
         aria-invalid={false}
         aria-label="Password"
         cursorColor="rgba(103, 80, 164, 1)"
-        editable={true}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}

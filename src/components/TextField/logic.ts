@@ -30,7 +30,7 @@ import type {
   TextFieldProps,
   TextFieldSharedApi,
 } from './TextField';
-import { getAccentColors, parseStatus } from './utils';
+import { getAccentColors } from './utils';
 import { useInternalTheme } from '../../core/theming';
 
 export const useTextField = (props: TextFieldProps): TextFieldHookReturn => {
@@ -59,9 +59,9 @@ export const useTextField = (props: TextFieldProps): TextFieldHookReturn => {
   // =======================
 
   const { isRTL } = I18nManager.getConstants();
-  const { hasError, disabled: isDisabled } = parseStatus(props.status);
-  const disabled = props.editable === false || isDisabled;
+  const disabled = props.editable === false;
   const isFloating = isFocused || !!props.value;
+  const hasError = !!props.error;
   const hasAccessory = isRTL ? !!props.EndAccessory : !!props.StartAccessory;
   const hasPrefix = !!props.prefix && isFloating;
   const hasSuffix = !!props.suffix && isFloating;

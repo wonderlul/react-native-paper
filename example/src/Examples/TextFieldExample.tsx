@@ -82,14 +82,6 @@ const TextFieldDemo = ({ variant }: TextFieldDemoProps) => {
   const setModifier = (key: keyof DemoModifiers, text: string) =>
     setModifiers((prev) => ({ ...prev, [key]: text }));
 
-  const status =
-    controls.error || controls.disabled
-      ? [
-          ...(controls.error ? (['error'] as const) : []),
-          ...(controls.disabled ? (['disabled'] as const) : []),
-        ]
-      : undefined;
-
   const LeadingIcon = React.useCallback(
     (props: TextFieldAccessoryProps) => (
       <TextField.Icon {...props} icon="magnify" />
@@ -143,7 +135,8 @@ const TextFieldDemo = ({ variant }: TextFieldDemoProps) => {
         label={modifiers.label || undefined}
         placeholder={modifiers.placeholder || undefined}
         supportingText={modifiers.helperText || undefined}
-        status={status}
+        error={controls.error}
+        editable={!controls.disabled}
         value={value}
         onChangeText={setValue}
         multiline={controls.multiline}
