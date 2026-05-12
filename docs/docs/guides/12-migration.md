@@ -31,7 +31,7 @@ import { TextField, type TextFieldProps } from 'react-native-paper';
 
 - **`left` / `right`** → **`StartAccessory` / `EndAccessory`**
 - **`TextInput.Icon`** → **`TextField.Icon`**
-- **`TextInput.Affix`** → **`prefix` / `suffix`**, or **`TextInput.Icon`**, or **`StartAccessory` / `EndAccessory`**
+- **`TextInput.Affix`** → **`prefix` / `suffix`**, or **`TextField.Icon`**, or **`StartAccessory` / `EndAccessory`**
 
 ```tsx
 // Before (v5)
@@ -54,7 +54,7 @@ import { TextField, type TextFieldProps } from 'react-native-paper';
 ## Label, helper, error, disabled
 
 - **`label: React.Element | string`** → **`string`**
-- **`error` / `disabled`** → **`status="error"` / `status="disabled"`** or **`status={['error','disabled']}`** when both apply.
+- **`error` / `disabled`** → **`error`** and **`editable={false}`**
 - **`HelperText`** was removed; use **`supportingText`**.
 
 ```tsx
@@ -74,7 +74,8 @@ import { TextField, type TextFieldProps } from 'react-native-paper';
 <TextField
   label="Email"
   labelProps={{ maxFontSizeMultiplier: 1.2 }}
-  status={['error', 'disabled']}
+  error={hasError}
+  editable={!isDisabled}
   supportingText={'Enter a valid email'}
 />
 ```
@@ -83,14 +84,14 @@ import { TextField, type TextFieldProps } from 'react-native-paper';
 
 No direct `TextField` equivalents for:
 
-- **`dense`**, **`contentStyle`**, **`outlineStyle`**, **`underlineStyle`**
+- **`dense`**, **`contentStyle`**, **`underlineStyle`**
 - **`underlineColor`**, **`activeUnderlineColor`**, **`outlineColor`**, **`activeOutlineColor`**, **`textColor`**
 - **`render`**
 
-Prefer **`fieldStyle`**, **`containerStyle`**, **`pressableStyle`**, **`style`** on the inner input, and the theme.
+Prefer **`fieldStyle`**, **`containerStyle`**, **`pressableStyle`**, **`style`** on the inner input, and the theme for the rest. Use **`outlineStyle`** for the indicator outline.
 
 ```tsx
-import { MD3LightTheme, TextField, TextInput } from 'react-native-paper';
+import { MD3LightTheme, TextField } from 'react-native-paper';
 
 const theme = {
   ...MD3LightTheme,
@@ -127,7 +128,7 @@ const theme = {
     paddingTop: 8,
     paddingBottom: 8,
   }}
-  fieldStyle={{
+  outlineStyle={{
     borderRadius: 12,
     borderWidth: 2,
   }}
