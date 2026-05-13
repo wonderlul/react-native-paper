@@ -12,7 +12,7 @@ const typeDefinitions = {
   ThemeProp:
     'https://callstack.github.io/react-native-paper/docs/guides/theming#theme-properties',
   'ComponentType<TextFieldAccessoryProps>':
-    'https://github.com/callstack/react-native-paper/blob/main/src/components/TextField/TextField.tsx#L20',
+    'https://github.com/callstack/react-native-paper/blob/main/src/components/TextField/TextField.tsx#L26',
   AccessibilityState:
     'https://reactnative.dev/docs/accessibility#accessibilitystate',
   'StyleProp<ViewStyle>': 'https://reactnative.dev/docs/view-style-props',
