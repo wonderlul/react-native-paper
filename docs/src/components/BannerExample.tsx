@@ -16,7 +16,7 @@ import {
   RadioButton,
   Switch,
   Text,
-  TextInput,
+  TextField,
   useTheme,
 } from 'react-native-paper';
 
@@ -106,14 +106,14 @@ const BannerExample = () => {
         </Stack>
 
         <Stack direction="row" spacing={8} style={styles.row}>
-          <TextInput
+          <TextField
             label="Email"
             value={text}
             onChangeText={(text) => setText(text)}
           />
-          <TextInput
+          <TextField
             label="Email"
-            mode="outlined"
+            variant="outlined"
             value={text}
             onChangeText={(text) => setText(text)}
           />
